@@ -1,28 +1,44 @@
 {
-  "pages":[
+  "pages": [
+    "pages/personal/personal",
+    "pages/login/login",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/register/register",
+    "pages/reset-password/reset-password",
+    "pages/wallet/wallet",
+    "pages/edit-info/edit-info",
+    "pages/video-index/video-index",
+    "pages/video-group-list/video-group-list",
+    "pages/video-item-list/video-item-list",
+    "pages/bill/bill"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#a1a1a1",
     "selectedColor": "#4572ae",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/login/login",
         "text": "首页",
         "iconPath": "./assets/imgs/home.png",
         "selectedIconPath": "./assets/imgs/home_active.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/video-index/video-index",
+        "text": "音频",
+        "iconPath": "./assets/imgs/video.png",
+        "selectedIconPath": "./assets/imgs/video_active.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
         "text": "我的",
-        "iconPath":"./assets/imgs/personal.png",
+        "iconPath": "./assets/imgs/personal.png",
         "selectedIconPath": "./assets/imgs/personal_active.png"
       }
     ]

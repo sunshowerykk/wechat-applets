@@ -1,0 +1,35 @@
+<!--pages/bill/bill.wxml-->
+<view class="page">
+  <view class="header">
+    <view>明细</view>
+    <view>收支</view>
+  </view>
+  <view class="list-item">
+    <view class="bill">
+      <view class="name">购买课程花费22元</view>
+      <view class="time">2018-01-23</view>
+    </view>
+    <view class="monney">-22</view>
+  </view>
+  <view class="list-item">
+    <view class="bill">
+      <view class="name">购买课程花费22元</view>
+      <view class="time">2018-01-23</view>
+    </view>
+    <view class="monney">-22</view>
+  </view>
+  <view class="list-item">
+    <view class="bill">
+      <view class="name">购买课程花费22元</view>
+      <view class="time">2018-01-23</view>
+    </view>
+    <view class="monney">-22</view>
+  </view>
+  <view class="list-item">
+    <view class="bill">
+      <view class="name">购买课程花费22元</view>
+      <view class="time">2018-01-23</view>
+    </view>
+    <view class="monney">-22</view>
+  </view>
+</view>

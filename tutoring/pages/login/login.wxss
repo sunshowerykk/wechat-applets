@@ -1,0 +1,111 @@
+/* pages/login/login.wxss */
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #f5f5f5;
+}
+
+.form-wrapper {
+  margin-top: 30px;
+  background: #fff;
+}
+
+.input-wrapper {
+  height: 60px;
+  width: 100%;
+  padding: 10px 50px;
+  box-sizing: border-box;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 100%;
+}
+
+.username {
+  position: relative;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC6klEQVRYR7VX4VkiMRCdSQNyFbhWAFeBWIFagVwBZGMF2sEloYCDCuQqUCuAq0BKwAYy9w3fhG9Zl91ZxfziY5PMy8vMvBeEnsM5N0gp3SHiDQCMZfkGAF4QceG9f+mzJfaZ7JybENFvABjwOiJ6lfUFIp7L7yUi/vLebzV7qwFI8D8A8I6IDgCW1SDOuVFKySPiJQCsEfFKA0IFwDk3JqJnIvpnjBm3bWytnSPiHV9JCOGqiwUVAGstn2iIiD+99+uuTa21fA3XwkJrTnQCYGqJaEVEIcbI1HcO51xBRG9EtIgxTtoWdAKw1j4i4oPmNNVAwtpZCOHiVAAuvPdcbqphreWyvAwhtB7yOxnguy9ijMWXGHDO3RDRk9T2XHV8ACjLcktE6xhjblaNSzsZ4M5HREz9SlNWHCX3DA3oTgC8obWWG0yZUrqfzWa+jQUB/AYAiIhFVzNSAZD+z0k1JCIXYwxNIKRkn/jutVWjAiC0FiklbjBDANgQkec75m+IOBBx4prftWrvvSpf1AA40HQ6dcaYhyxGR67ChxDutcmqAiBJxYF3JcWawILDTGQ1BICRsMN/MUOPMcZFF5BWANJSWQG5lN6ZdmPM/FhD4vkppYmo5Zl4hNu2RDwKQBLqmenmnm6M4XtVabwkLaviNQBsJSEbRawRQDW4ppaP0VzxEEdBfAAgdbySUmJno8pmBYhGk/IBQNZyTdPpSrD8XaqHrdwyhHBbXXcAoOJ8Xrt6uDZ4npfVsd6gDgBYazdsLhGxl/RqwGSTUrdqewBZ9fo4H03gmknZ+cUqC3sAFR938tNnEBV7t7dqewCi35sY46jvyfrMF6t2HkL4sdORvLgsSyKivzFGfvF828i2PVu1OoCTZ3/9JHWv2JQDKu//GYoqObBnuloFu9eP9G4WkF6PzC5A0mPYrLB34Gfbbv96I+LHJ6vfZ8eH51h+V+QN69rSpAXjlJITJesFhH1CvYoYgMj5RqT8gNn/zdXcMNV9sbMAAAAASUVORK5CYII=") no-repeat 15px center;
+  background-size: 20px 20px;
+}
+.password {
+  position: relative;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACPklEQVRYR+2X4XHbMAyFAS5Qb1BvEGeCuBPUmcDpAGaZDdwJSlIDJJmgzgS1J6i7gbuBM4D4evDRPkWRRCpVz/kR/tKdKOIj+AA+MZ158JnjU28AY8wUwJyIxkQ0jRtYE9GWmR+ttfKcPbIBjDETAN8rQduCrJn5i7V2l0ORBRCD/ySikSwKYKOUuieiQ5CyLCfMPGPmqxh0z8yfrLXbFEQSoBocwB+l1E1bmuPxrIjoAxEJxGUqE0kArbWkVHb2xMxja+2+a1cRWHQgECvn3HXX/E6AuNgvWSCmNEtgxpgbAHfxO8lC61F0AmitLTN/BfDbez9JnWf1vdZ6x8wfQwi3RVHYtm9TAIf0A/jmvV/2BLhn5jmAR+/97FUAksoQwlgpte5b3yLIEMJUKbWz1krFNI7GDBhjRiGEuZRWn123zN0DWHnvH5revwCIwvsRO90A8U9LSKe8rpflMwDZOQBRvbTZJwCSus6yyyAciZDjvK1z7rL6TR0gu3wyAp+mxAYlnVTKWbIgzeowngForY/K3XjvjxdNn1itc48NrV5RdYBj2b0DvP0MSMWUZXkhh14UxSYllME1UFW2cy77Vh1MhO8AogEiOlzRORfV4BpIia7+PhdgxcyfxXSepRMuFgujlBLrnWUoc7NQs3Zi2U/+oOk2FKsthnIHYAkgy9+3Gg5msezipkQzL4xtkx+YxWtYIIYcEnxaN6htjmgcQlhGR/RPIPIvQURrpdSy6R8h2cGGTEGWJfvfAevr/wVfCsEwqTthrgAAAABJRU5ErkJggg==") no-repeat 15px center;
+  background-size: 20px 20px;
+}
+
+.captcha {
+position: relative;
+background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB0UlEQVRYR+2W4VXCQAzHk2MA2QA2kA3ECdQNdABqmECcwPQYQDdAJxA2gA1gAxyAiy+8lHeglILn40v7hT7aXn753z/JIZz5wjPHhxqgVuBXBYioHUK4BIBOIpNOnXMzZp7vrvcDoNfrkXPuJVHgrWVCCP3hcMjxn1sARNQVkU8RWYgINxqNaQqQ1WrVQURCxBYiXjPzuFh3CyDLsgEiPgHAGBHvmHmZAoCImiIyAgBN8Nl7P9gHoIGv7OEcER9i2lNgTNVXAGjr9yIy8d53SwFEJEfEewC4AADO87x/SvAsyxgRHwHgS0Te9L4SgO4TAMxDCPqRKjI1NSp5gog6IqJZ6+/EOafJtM1fhxWIjRJXhYiQ9z4vUyN+P3Z9ZPDjADSYZmRqaG9Qn6g3tmpae4dlrUabadbMvFHsTwBFxtGeLg3i3QBvLbi6Pffe065KSQAsWNfUaAHAGgAAFGBhWW9qPIZIBmAQTYO4sdL6sOB7+0ZSgCIzIrrVe2YulNjrz38BOKY31ABVFVgPIxtEB/f1yC3QShmVDqOCUtuwjmMRqdR6D4Eg4nocazsuHce60FkPJFF56ejU9pvkSOacUyWnlY5kh+RM/bw+ltcKnF2Bb8agkDAykkOGAAAAAElFTkSuQmCC") no-repeat 15px center;
+  background-size: 20px 22px;
+}
+
+.line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 0;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.input-placeholder {
+  color: #c7c7cc;
+}
+
+.bottom-link {
+  float: right;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #6f6f6f;
+}
+
+.link {
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 15px;
+}
+
+.clearfix {
+  content: "";
+  clear: both;
+}
+
+.btn-wrapper {
+  margin-top: 40px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.btn {
+  background: #9fb7d5;
+  color: #fff;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  letter-spacing: 1px;
+}
+
+.btn.active {
+  background: #4572ae;
+}
+
+.captcha-input {
+  width: 70% !important;
+}
+
+.captcha-btn {
+  position: absolute;
+  right: 15px;
+  height: 40px;
+  width: 100px;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 14px;
+  line-height: 40px;
+  color: #5c5c5c;
+}
+

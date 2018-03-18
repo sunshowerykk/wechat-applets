@@ -1,85 +1,89 @@
+// pages/video-group-list/video-group-list.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    list: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getGroupList(options.id);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+  
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+  
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+  
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+  
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
-  },
-  // 去钱包页
-  toAccount: function() {
-    wx.navigateTo({
-      url: '/pages/wallet/wallet',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+  
   },
   /**
-   * 去用户修改页
+   * get group list
    */
-  toEditInfo: function() {
+  getGroupList: function (id) {
+    var url = 'http://www.kaoben.top/audio/get-audio?cat_id=' + id;
+    var that = this;
+    wx.request({
+      url: url,
+      success: function(res) {
+        let list = res.data.data || [];
+        console.log(list);
+        that.setData({
+          list: list
+        });
+      }
+    })
+  },
+  toItemList: function (event) {
+    var id = event.target.dataset.id;
     wx.navigateTo({
-      url: '/pages/edit-info/edit-info',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      url: '/pages/video-item-list/video-item-list?id=' + id,
     })
   }
 })

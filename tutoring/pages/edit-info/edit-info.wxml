@@ -1,0 +1,13 @@
+<!--pages/edit-info/edit-info.wxml-->
+<view class="page">
+<view class="item">
+  <view class="key">头像</view>
+  <view class="value">
+    <image src="http://www.kaoben.top/uploads/img/head_img/15201585854882.jpg"></image>
+  </view>
+</view>
+<view class="item">
+  <view class="key">昵称</view>
+  <view class="value">space</view>
+</view>
+</view>

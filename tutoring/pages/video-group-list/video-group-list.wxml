@@ -1,0 +1,15 @@
+<!--pages/video-group-list/video-group-list.wxml-->
+<view class="page">
+  <view class="section">
+    <view class="section-header">
+      <view>{{list.cat.catname}}</view>
+    </view>
+    <view class="video-list">
+      <view class="video-item" bindtap="toItemList" data-id="{{list.cat.id}}" wx:for="{{list.audioList}}" wx:for-item="audio" wx:key="{{index}}">
+        <image src="{{audio.pic}}"></image>
+        <view class="video-text">{{audio.des}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
