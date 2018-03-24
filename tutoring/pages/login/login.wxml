@@ -2,10 +2,10 @@
 <view class="page">
 <view class="form-wrapper">
 <view class="input-wrapper username line">
-<input placeholder="手机号码" ></input>
+<input placeholder="手机号码" bindinput='usernameInput'></input>
 </view>
 <view class="input-wrapper password">
-<input password="true" placeholder="密码"></input>
+<input password="true" placeholder="密码" bindinput='passwordInput'></input>
 </view>
 </view>
 <view class="bottom-link">
@@ -13,6 +13,6 @@
 </view>
 <view class="clearfix"></view>
 <view class="btn-wrapper">
-  <button class="btn active">登录</button>
+  <button class="btn active" bindtap='onLogin'>登录</button>
 </view>
 </view>

@@ -1,0 +1,57 @@
+/* pages/message/message.wxss */
+.container {
+  padding: 0 20px;
+}
+
+.message-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.message-item {
+  position: relative;
+}
+
+.message-title {
+  position: relative;
+  font-weight: 500;
+  font-size: 18px;
+  color: #333;
+}
+
+.message-item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(0, -50%);
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABtElEQVRoQ+3Z3U3DMBAH8Dsp73QDYAI6AnmwnxmhnQSYgDABZQLe7UrpBu0IjMB7IhkZGSlCUMcX3zkVzWuc9P/zR3XRIZz4hSeeH/4voG3bRdd1T4h455z7AIBGa/0svaLkFTDG7BFxOQzsnNtordeSCBJgu936WX/7Lag0ggSw1j4AwP1fMy2JIAGOrcA3SgpBAvgD3Pf9AQAuj+13CQQJ4EMbY5aIuAOAi5IIMmAuiEmAOSAmA0ojsgBKIrIBSiGyAkogsgOkESwASQQbQArBCpBAsAO4ESKAFAQAPCqlfLk+6hID+DTW2lsAaGPJqqq6ruv6PTbO3xcFhJVYIeJLpIJda603Z8CYGUgZE74h9rFnZrmFQni//xcRwPwO8djwzrlXrfUqtkLD++yHmDM8+78Qd3hWgER4NoBUeBaAZPjsAOnwWQElwmcDlAqfBVAy/GRA6fCTAHMITwaE/phvMV1F6vrk2ialDiIDRjY42MOTASNaTCLhyYBIk08sPBkQvm0PiHgz3LOUej51z/8cT/4eCAe58Y1uAPhqdCulmqmBUp8nA1J/iGv8GcA1s2Pf+wk+pltAudgGfgAAAABJRU5ErkJggg==") no-repeat center;
+  background-size: 20px 20px;
+}
+
+.message-title.active::after {
+    content: '未读';
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 12px;
+    background: #f9432c;
+    padding: 0 3px;
+    color: #fff;
+    vertical-align: middle;
+}
+.message-time {
+  font-size: 14px;
+  color: #999999;
+  margin: 5px 0;
+}
+
+.message-content {
+  font-size: 16px;
+  color: #777;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

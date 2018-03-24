@@ -81,5 +81,29 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
+  },
+  /**
+   * 去消息列表
+   */
+  toMessage: function() {
+    wx.navigateTo({
+      url: '/pages/message/message',
+    })
+  },
+  /**
+   * 去我的订单
+   */
+  toOrder: function() {
+    wx.navigateTo({
+      url: '/pages/order/order',
+    })
+  },
+  /**
+   * 到我的课程
+   */
+  toCourse: function() {
+    wx.navigateTo({
+      url: '/pages/course/course',
+    })
   }
 })

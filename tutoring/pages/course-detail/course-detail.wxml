@@ -1,0 +1,4 @@
+<!--pages/course-detail/course-detail.wxml-->
+<view class="container">
+  <image src=""></image>
+</view>

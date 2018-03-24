@@ -17,6 +17,6 @@
 </view>
 <view class="clearfix"></view>
 <view class="btn-wrapper">
-  <button class="btn active">注册</button>
+  <button class="btn active" bindtap='handleRegister'>注册</button>
 </view>
 </view>

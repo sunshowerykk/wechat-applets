@@ -11,7 +11,12 @@
     "pages/video-index/video-index",
     "pages/video-group-list/video-group-list",
     "pages/video-item-list/video-item-list",
-    "pages/bill/bill"
+    "pages/bill/bill",
+    "pages/message/message",
+    "pages/message-detail/message-detail",
+    "pages/order/order",
+    "pages/course/course",
+    "pages/course-detail/course-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

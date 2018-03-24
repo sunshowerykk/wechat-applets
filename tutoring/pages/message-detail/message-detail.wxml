@@ -1,0 +1,10 @@
+<!--pages/message-detail/message-detail.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="message-title">管理员消息</view>
+    <view class="message-time">2018-03-03 16:51:01</view>
+  </view>
+  <view class="message-content">
+    管理员信息管理员信息管理员信息管理员信息管理员信息管理员信息管理员信息管理员信息管
+  </view>
+</view> 

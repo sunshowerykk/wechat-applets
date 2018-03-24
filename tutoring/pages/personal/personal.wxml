@@ -11,11 +11,11 @@
   </view>
   <view class="operate-list">
     <view class="account item line" bindtap='toAccount'>我的账户</view>
-    <view class="course item line">我的课程</view>
-    <view class="order item">我的订单</view>
+    <view class="course item line" bindtap='toCourse'>我的课程</view>
+    <view class="order item" bindtap='toOrder'>我的订单</view>
   </view>
    <view class="operate-list">
-    <view class="message item">消息通知</view>
+    <view class="message item" bindtap='toMessage'>消息通知</view>
    </view>
   <view class="logout">登出</view>
 </view>

@@ -1,0 +1,27 @@
+<!--pages/order/order.wxml-->
+<view class="container">
+  <view class="item">
+    <view class="header">
+      <view class="time">2018-01-28 17:40:39</view>
+      <view class="status">总价：22元</view>
+    </view>
+    <view class="content">
+      <image src="http://www.kaoben.top/uploads/img/head_img/15201585854882.jpg"></image>
+      <view class="name">语文课程</view>
+    </view>
+    <view class="footer">已支付</view>
+  </view>
+  <view class="item">
+    <view class="header">
+      <view class="time">2018-01-28 17:40:39</view>
+      <view class="status">总价：22元</view>
+    </view>
+    <view class="content">
+      <image src="http://www.kaoben.top/uploads/img/head_img/15201585854882.jpg"></image>
+      <view class="name">语文课程</view>
+    </view>
+    <view class="footer">
+      <button>去支付</button>
+    </view>
+  </view>
+</view>

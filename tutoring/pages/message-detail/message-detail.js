@@ -1,4 +1,4 @@
-// pages/register/register.js
+// pages/message-detail/message-detail.js
 Page({
 
   /**
@@ -62,23 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  handleRegister: function() {
-    var url = 'http://api.kaoben.top/users/signup';
-    wx.request({
-      url: url,
-      data: {
-        phone: '18811717528',
-        password: '123456',
-        smscode: '123456',
-        invite: 1
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function() {
-
-      }
-    })
   }
 })
