@@ -1,3 +1,4 @@
+const request = require('../../utils/request.js');
 // pages/login/login.js
 Page({
 
@@ -93,40 +94,12 @@ Page({
    * 登录接口
    */
   onLogin: function() {
-    var that = this;
-    var url = 'http://api.kaoben.top/users/login';
-    wx.request({
-      url: url,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        phone: that.data.username,
-        password: that.data.password
-      },
-      success: function(res) {
-        if (res.data.access_token) {
-          that.setToken(res.data.access_token);
-          var redirectUrl = that.data.redirectUrl || '/pages/personal/personal';
-          wx.reLaunch({
-            url: redirectUrl,
-            fail: function(err) {
-              console.log(err);
-            }
-          })
-        } else {
-          wx.showToast({
-            title: res.data[0].message,
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      },
-      fail: function() {
-
-      }
-    })
+    var data = {
+      phone: this.data.username,
+      password: this.data.password
+    }
+    var redirectUrl = this.data.redirectUrl;
+    request.onLogin(data, redirectUrl);
   },
   /**
    * 设置登录token

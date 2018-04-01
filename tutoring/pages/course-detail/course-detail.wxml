@@ -1,4 +1,10 @@
 <!--pages/course-detail/course-detail.wxml-->
 <view class="container">
-  <image src=""></image>
+  <image src="http://kaoben.top/uploads/img/course/15201524716522.png"></image>
+  <view class="des-content">
+    <view>语文</view>
+  </view>
+  <view class="video-list">
+
+  </view>
 </view>

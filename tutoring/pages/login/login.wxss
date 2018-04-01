@@ -104,8 +104,12 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABze
   width: 100px;
   top: 50%;
   transform: translate(0, -50%);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 40px;
   color: #5c5c5c;
+}
+
+.captcha-btn.disabled {
+  color: #ccc;
 }
 

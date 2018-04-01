@@ -1,1 +1,9 @@
 /* pages/course-detail/course-detail.wxss */
+image {
+  width: 100%;
+  height: 500rpx;
+}
+
+.des-content {
+  padding: 20rpx 20rpx;
+}
