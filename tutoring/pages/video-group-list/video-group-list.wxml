@@ -5,9 +5,9 @@
       <view>{{list.cat.catname}}</view>
     </view>
     <view class="video-list">
-      <view class="video-item" bindtap="toItemList" data-id="{{list.cat.id}}" wx:for="{{list.audioList}}" wx:for-item="audio" wx:key="{{index}}">
-        <image src="{{audio.pic}}"></image>
-        <view class="video-text">{{audio.des}}</view>
+      <view class="video-item" bindtap="toItemList" data-id="{{audio.id}}" wx:for="{{list.audioList}}" wx:for-item="audio" wx:key="{{index}}">
+        <image src="{{audio.pic}}" data-id="{{audio.id}}" wx-if="{{audio.id}}"></image>
+        <view class="video-text" data-id="{{audio.id}}">{{audio.des}}</view>
       </view>
     </view>
   </view>

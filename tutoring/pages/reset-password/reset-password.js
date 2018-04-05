@@ -91,7 +91,7 @@ Page({
       util.showToast('请输入验证码');
       return;
     }
-    var invite = wx.getStorageSync('invite') || '';
+   
     var data = {
       phone: phone,
       password: password,

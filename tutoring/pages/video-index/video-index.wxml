@@ -7,7 +7,7 @@
     </view>
     <view class="video-list">
       <view class="video-item" bindtap="toItemList" wx:for="{{item.audioList}}" wx:for-item="audio" wx:key="{{audio.id}}" data-id="{{audio.id}}">
-        <image src="{{audio.pic}}" data-id="{{audio.id}}"></image>
+        <image src="{{audio.pic}}" data-id="{{audio.id}}" wx-if="{{audio.pic}}"></image>
         <view class="video-text" data-id="{{audio.id}}">{{audio.des}}</view>
       </view>
     </view>

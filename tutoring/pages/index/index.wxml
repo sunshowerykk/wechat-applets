@@ -1,13 +1,72 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+  <view class="school-container">
+    <view class="header">直属学院</view>
+    <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+      <view id="green" class="scroll-view-item_H bc_yellow" bindtap='navigatoSchool'>
+        <image src="http://kaoben.top/uploads/img/course-category/15192022687586.png"></image>
+        <view class="school-name">公共学院</view>
+      </view>
+      <view id="red"  class="scroll-view-item_H bc_blue" bindtap='navigatoSchool'>
+        <image src="http://kaoben.top/uploads/img/course-category/15147023877384.png"></image>
+        <view class="school-name">健康学院</view>
+      </view>
+      <view id="yellow" class="scroll-view-item_H bg-purper" bindtap='navigatoSchool'>
+        <image src="http://kaoben.top/uploads/img/course-category/15147025111919.png"></image>
+        <view class="school-name">书法学院</view>
+      </view>
+      <view id="blue" class="scroll-view-item_H bc_green" bindtap='navigatoSchool'>
+        <image src="http://kaoben.top/uploads/img/course-category/15147026501076.png"></image>
+        <view class="school-name">美术学院</view>
+      </view>
+      <view id="blue" class="scroll-view-item_H bg-music" bindtap='navigatoSchool'>
+        <image src="http://kaoben.top/uploads/img/course-category/15147053378338.png"></image>
+        <view class="school-name">摄影学院</view>
+      </view>
+      <view id="blue" class="scroll-view-item_H bg-wenxue" bindtap='navigatoSchool'>
+        <image src="http://kaoben.top/uploads/img/course-category/15147053635798.png"></image>
+        <view class="school-name">文学院</view>
+      </view>
+    </scroll-view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="select-list">
+    <view class="scource-item">
+      <view class="select-header">
+        <view>精选课程</view>
+        <view></view>
+      </view>
+      <view class="item" bindtap='toDetail'>
+       <image src="http://www.kaoben.top/uploads/img/course/15201543373503.png"></image>
+        <view class="text">
+          <view class="name">课程名：语文课</view>
+          <view class="money">价格：22元</view>
+          <view class="">截止日期: 1970-01-01</view>
+        </view>
+      </view>
+      <view class="item">
+        <image src="http://www.kaoben.top/uploads/img/course/15201543373503.png"></image>
+        <view class="text">
+          <view class="name">课程名：语文课</view>
+          <view class="money">价格：22元</view>
+          <view class="">截止日期: 1970-01-01</view>
+        </view>
+      </view>
+        <view class="item">
+        <image src="http://www.kaoben.top/uploads/img/course/15201543373503.png"></image>
+        <view class="text">
+          <view class="name">课程名：语文课</view>
+          <view class="money">价格：22元</view>
+          <view class="">截止日期: 1970-01-01</view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

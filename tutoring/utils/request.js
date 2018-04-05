@@ -64,9 +64,7 @@ const getCaptcha = data => {
       'content-type': 'application/x-www-form-urlencoded'
     },
     success: function (res) {
-      if (res.statusCode !== 200) {
-        util.showToast(res.data[0].message);
-      }
+      util.showToast(res.data.message);
     }
   })
 }
@@ -91,10 +89,51 @@ const onResetPassword = (data, redirectUrl) => {
   })
 }
 
+const uploadFile = (filePath, cb) => {
+  wx.uploadFile({
+    url: '',
+    filePath: filePath,
+    name: '',
+    success: cb
+  })
+}
+
+// ====== 音频相关 =====
+// 音频首页
+const getAudioHome = cb => {
+  const url = HOST + '/audios/audio-home';
+  wx.request({
+    url: url,
+    success: cb
+  })
+};
+
+// 音频列表页
+const getAudioList = (id, cb) => {
+  const url = HOST + '/audios/get-audio?cat_id=' + id;
+  wx.request({
+    url: url,
+    success: cb
+  })
+};
+
+// 音频详情
+const getAudioDetail = (id, cb) => {
+  const url = HOST + '/audios/get-audiosection?audio_id=' + id;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
 
 module.exports = {
   onLogin: onLogin,
   onRegister: onRegister,
   getCaptcha: getCaptcha,
-  onResetPassword: onResetPassword
+  onResetPassword: onResetPassword,
+  getAudioHome: getAudioHome,
+  getAudioList: getAudioList,
+  getAudioDetail: getAudioDetail,
+  uploadFile: uploadFile
 }

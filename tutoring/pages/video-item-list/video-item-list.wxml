@@ -1,14 +1,20 @@
 <!--pages/video-item-list/video-item-list.wxml-->
 <view class="page">
   <view class="header">
-    <image src="{{list.audio.pic}}"></image>
-    <view class="name">{{list.audio.des}}</view>
+    <image src="{{list.audio.pic}}" wx-if="{{list.audio}}" ></image>
+    <view>
+      <view class="name">{{list.audio.des}}</view>
+      <view class="waiting">{{waiting}}</view>
+    </view>
+    
+
+    <view class="mask {{status}}" bindtap='handleCtrAudio'></view>
   </view>
   <view class="video-list">
-    <view class="total">全部歌曲（19首）</view>
-    <view class="video-item active" wx:for="{{list.sectionList}}" wx:key="{{index}}">
-      <view class="video-name">{{item.name}}</view>
-      <view class="video-author">{{item.author}}</view>
+    <view class="total">全部歌曲（{{list.sectionList.length}}首）</view>
+    <view class="video-item {{item.status}}" wx:for="{{list.sectionList}}" wx:key="{{index}}" bindtap='handlePlay'  data-url="{{item.url}}" data-index="{{index}}">
+      <view class="video-name" data-url="{{item.url}}" data-index="{{index}}">{{item.name}}</view>
+      <view class="video-author" data-url="{{item.url}}" data-index="{{index}}">{{item.author}}</view>
     </view>
   </view>
 </view>

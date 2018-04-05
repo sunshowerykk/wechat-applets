@@ -1,0 +1,7 @@
+/* pages/school-detail/school-detail.wxss */
+@import '../course/course.wxss';
+
+.header {
+  font-size: 24px;
+  font-weight: 500;
+}

@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/personal/personal",
     "pages/login/login",
     "pages/index/index",
+    "pages/personal/personal",
     "pages/logs/logs",
     "pages/register/register",
     "pages/reset-password/reset-password",
@@ -16,7 +16,9 @@
     "pages/message-detail/message-detail",
     "pages/order/order",
     "pages/course/course",
-    "pages/course-detail/course-detail"
+    "pages/course-detail/course-detail",
+    "pages/school-detail/school-detail",
+    "pages/info-input/info-input"
   ],
   "window": {
     "backgroundTextStyle": "light",

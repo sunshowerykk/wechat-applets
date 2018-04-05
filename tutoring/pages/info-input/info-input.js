@@ -1,19 +1,18 @@
-// pages/video-group-list/video-group-list.js
-const request = require('../../utils/request.js');
+// pages/info-input/info-input.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: {}
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getGroupList(options.id);
+  
   },
 
   /**
@@ -63,28 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  /**
-   * get group list
-   */
-  getGroupList: function (id) {
-    var url = 'http://www.kaoben.top/audio/get-audio?cat_id=' + id;
-    var that = this;
-    request.getAudioList(id, function(res) {
-      let list = res.data.data || [];
-      if (list.audioList.length % 3 === 2) {
-        list.audioList.push({})
-      }
-      that.setData({
-        list: list
-      });
-    });
-  },
-  toItemList: function (event) {
-    var id = event.target.dataset.id;
-    if (!id) return;
-    wx.navigateTo({
-      url: '/pages/video-item-list/video-item-list?id=' + id,
-    })
   }
 })

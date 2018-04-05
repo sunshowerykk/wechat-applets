@@ -62,5 +62,16 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  uploadImg: function() {
+    wx.chooseImage({
+      count: 1,
+      success: function(res) {
+        console.log(res.tempFilePaths);
+      }
+    });
+  },
+  uploadFile: function() {
+    
   }
 })

@@ -1,21 +1,125 @@
 /**index.wxss**/
-.userinfo {
+page {
+  background: #f5f5f5;
+}
+.school-container {
+  padding: 20rpx 0;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+#public {
+  background: url("http://kaoben.top/uploads/img/course-category/15192022687586.png") no-repeat center;
+  background-size: 20px 20px; 
+}
+
+
+
+.scroll-view_H {
+  width: 100%;
+  white-space: nowrap;
+  vertical-align: text-top;
+}
+.school-container image {
+  width: 75rpx;
+  height: 75rpx;
+  margin: 37.5rpx;
+}
+.scroll-view-item_H {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 10px;
+  display: inline-block;
+  border-radius: 2rpx;
+}
+.header {
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+.slide-image {
+  width: 100%;
+  height: 455rpx;
+}
+
+.bc_green {
+  background: #54cea9;
+}
+
+.bc_red {
+  background: red;
+}
+
+.bc_yellow {
+  background: #f6ce00;
+}
+
+.bc_blue {
+  background: #4caafc;
+}
+
+.school-name {
+  font-size: 16px;
+}
+
+.bg-purper {
+  background: #e994dc;
+}
+
+.bg-music {
+  background: #e3b47b
+}
+
+.bg-wenxue {
+  background: #848d99;
+}
+
+.select-list {
+  background: #fff;
+  padding: 30rpx 20rpx;
+}
+
+.select-header {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.text {
+  padding: 5rpx 10rpx;
+  line-height: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+.item {
+  position: relative;
+  display: flex;
+  color: #ccc;
+  font-size: 14px;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #ebebeb;
+}
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+.select-list image {
+  width: 200rpx;
+  height: 230rpx;
+  margin-right: 20rpx;
+  border-radius: 5px;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(0, -50%);
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABtElEQVRoQ+3Z3U3DMBAH8Dsp73QDYAI6AnmwnxmhnQSYgDABZQLe7UrpBu0IjMB7IhkZGSlCUMcX3zkVzWuc9P/zR3XRIZz4hSeeH/4voG3bRdd1T4h455z7AIBGa/0svaLkFTDG7BFxOQzsnNtordeSCBJgu936WX/7Lag0ggSw1j4AwP1fMy2JIAGOrcA3SgpBAvgD3Pf9AQAuj+13CQQJ4EMbY5aIuAOAi5IIMmAuiEmAOSAmA0ojsgBKIrIBSiGyAkogsgOkESwASQQbQArBCpBAsAO4ESKAFAQAPCqlfLk+6hID+DTW2lsAaGPJqqq6ruv6PTbO3xcFhJVYIeJLpIJda603Z8CYGUgZE74h9rFnZrmFQni//xcRwPwO8djwzrlXrfUqtkLD++yHmDM8+78Qd3hWgER4NoBUeBaAZPjsAOnwWQElwmcDlAqfBVAy/GRA6fCTAHMITwaE/phvMV1F6vrk2ialDiIDRjY42MOTASNaTCLhyYBIk08sPBkQvm0PiHgz3LOUej51z/8cT/4eCAe58Y1uAPhqdCulmqmBUp8nA1J/iGv8GcA1s2Pf+wk+pltAudgGfgAAAABJRU5ErkJggg==") no-repeat center;
+  background-size: 20px 20px;
 }
