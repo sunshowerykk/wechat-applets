@@ -14,10 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const showToast = title => {
+const showToast = (title, type) => {
+  type = type || 'none';
   wx.showToast({
     title: title,
-    icon: 'none',
+    icon: type,
     duration: 2000
   })
 }

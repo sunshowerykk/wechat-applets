@@ -4,32 +4,13 @@
     <view>明细</view>
     <view>收支</view>
   </view>
-  <view class="list-item">
+  <view class="list-item" wx:for="{{billList}}"  wx:key="{{index}}" wx:if="{{billList.length > 0}}">
     <view class="bill">
-      <view class="name">购买课程花费22元</view>
-      <view class="time">2018-01-23</view>
+      <view class="name">{{item.operation_detail}}</view>
+      <view class="time">{{item.operation_time}}</view>
     </view>
-    <view class="monney">-22</view>
+    <view class="monney {{item.status}}">{{item.income}}</view>
   </view>
-  <view class="list-item">
-    <view class="bill">
-      <view class="name">购买课程花费22元</view>
-      <view class="time">2018-01-23</view>
-    </view>
-    <view class="monney">-22</view>
+  <view wx:if="{{billList.length === 0}}" class="no-result">暂无记录</view>
   </view>
-  <view class="list-item">
-    <view class="bill">
-      <view class="name">购买课程花费22元</view>
-      <view class="time">2018-01-23</view>
-    </view>
-    <view class="monney">-22</view>
-  </view>
-  <view class="list-item">
-    <view class="bill">
-      <view class="name">购买课程花费22元</view>
-      <view class="time">2018-01-23</view>
-    </view>
-    <view class="monney">-22</view>
-  </view>
-</view>
+

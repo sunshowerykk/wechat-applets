@@ -69,6 +69,8 @@ image  {
 .item {
   padding: 15px 40px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
 .item::after {
@@ -100,4 +102,11 @@ image  {
   text-align: center;
   color: brown;
   font-size: 16px;
+}
+
+.money {
+  color: #f09135;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
 }

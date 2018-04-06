@@ -1,18 +1,19 @@
 // pages/bill/bill.js
+const request = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    billList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getBill();
   },
 
   /**
@@ -62,5 +63,23 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  getBill: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    if (!token) return;
+    request.getBill(token, function(res) {
+      var data = res.data || [];
+      data.forEach(item => {
+        if (item.income.indexOf('-') > -1) {
+          item.status = '';
+        } else {
+          item.status = 'active';
+        }
+      })
+      that.setData({
+        billList: data
+      });
+    })
   }
 })

@@ -1,18 +1,19 @@
 // pages/order/order.js
+const request = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    orderList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getOrder();
   },
 
   /**
@@ -62,5 +63,26 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  // 获取订单列表
+  getOrder: function() {
+    const that = this;
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      this.goToLogin();
+      return;
+    }
+    request.getOrder(token, function(res) {
+      var data = res.data || [];
+      that.setData({
+        orderList: data
+      });
+    })
+  },
+  // 去登陆
+  goToLogin: function() {
+    wx.reLaunch({
+      url: '/pages/login/login?redirect_url=' + encodeURIComponent('/pages/order/order'),
+    })
   }
 })

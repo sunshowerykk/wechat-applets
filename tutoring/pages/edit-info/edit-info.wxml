@@ -1,13 +1,23 @@
 <!--pages/edit-info/edit-info.wxml-->
 <view class="page">
+<view class="item no-edit">
+  <view class="key">手机</view>
+  <view class="value">{{personalInfo.phone}}</view>
+</view>
 <view class="item" bindtap="uploadImg">
   <view class="key">头像</view>
   <view class="value">
-    <image src="http://www.kaoben.top/uploads/img/head_img/15201585854882.jpg"></image>
+    <image src="{{personalInfo.picture}}" wx-if="{{personalInfo.picture}}"></image>
   </view>
 </view>
-<view class="item">
+<view class="item" bindtap='handleEditNickname'>
   <view class="key">昵称</view>
-  <view class="value">space</view>
+  <view class="value">{{personalInfo.username}}</view>
+</view>
+<view class="item">
+  <view class="key">性别</view>
+  <picker bindchange="bindPickerChange" value="{{personalInfo.gender}}" range="{{array}}" class="picker">
+    <view class="weui-input">{{array[personalInfo.gender]}}</view>
+  </picker>
 </view>
 </view>

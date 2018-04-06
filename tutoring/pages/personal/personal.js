@@ -1,17 +1,19 @@
-Page({
+const request = require('../../utils/request.js');
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    
+    personalInfo: {},
+    balance: '0.00'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getPersonalInfo();
   },
 
   /**
@@ -25,7 +27,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getPersonalInfo();
+    this.getBalance();
   },
 
   /**
@@ -104,6 +107,58 @@ Page({
   toCourse: function() {
     wx.navigateTo({
       url: '/pages/course/course',
+    })
+  },
+  getPersonalInfo: function() {
+    const token = wx.getStorageSync('token');
+    const that = this;
+    if (!token) {
+      this.toLogin();
+      return;
+    }
+    request.getPersonalInfo(token, function(res) {
+      // 判断是否登录
+      if (res.data.status === 401) {
+        that.toLogin();
+        return;
+      }
+      that.setData({
+        personalInfo: res.data
+      });
+    });
+  },
+  // 去登录页面
+  toLogin: function() {
+    wx.reLaunch({
+      url: '/pages/login/login',
+    })
+  },
+  // 查询余额
+  getBalance: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    request.getBalance(token, function(res) {
+      var data = res.data;
+      if (data.status === '200' && data.balance) {
+        that.setData({
+          balance: data.balance
+        });
+      }
+    })
+  },
+  // 登出
+  handleLogout: function() {
+    var that = this;
+    wx.clearStorage({
+      success: function() {
+        that.goToLogin();
+      }
+    })
+  },
+  // 去登录页
+  goToLogin: function () {
+    wx.reLaunch({
+      url: '/pages/login/login',
     })
   }
 })

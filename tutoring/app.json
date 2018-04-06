@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
     "pages/personal/personal",
     "pages/logs/logs",
     "pages/register/register",
@@ -31,7 +31,7 @@
     "selectedColor": "#4572ae",
     "list": [
       {
-        "pagePath": "pages/login/login",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "./assets/imgs/home.png",
         "selectedIconPath": "./assets/imgs/home_active.png"

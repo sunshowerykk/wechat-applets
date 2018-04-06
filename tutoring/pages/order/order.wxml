@@ -1,6 +1,6 @@
 <!--pages/order/order.wxml-->
 <view class="container">
-  <view class="item">
+  <view class="item" wx:for="{{orderList}" wx:key="{{index}}">
     <view class="header">
       <view class="time">2018-01-28 17:40:39</view>
       <view class="status">总价：22元</view>

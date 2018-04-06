@@ -1,2 +1,4 @@
 <!--pages/info-input/info-input.wxml-->
-<text>pages/info-input/info-input.wxml</text>
+<view class="container">
+  <input bindinput='handleInput' bindconfirm="handleConfirm" value="{{value}}"></input>
+</view>

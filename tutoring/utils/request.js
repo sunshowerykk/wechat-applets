@@ -89,15 +89,6 @@ const onResetPassword = (data, redirectUrl) => {
   })
 }
 
-const uploadFile = (filePath, cb) => {
-  wx.uploadFile({
-    url: '',
-    filePath: filePath,
-    name: '',
-    success: cb
-  })
-}
-
 // ====== 音频相关 =====
 // 音频首页
 const getAudioHome = cb => {
@@ -126,6 +117,99 @@ const getAudioDetail = (id, cb) => {
   })
 }
 
+// ==== 个人中心相关 ====
+// get 个人信息
+const getPersonalInfo = (token, cb) => {
+  const url = HOST + '/personal/user-profile?access-token=' + token;
+  wx.request({
+    url: url,
+    success: cb
+  })
+};
+
+// 上传文件
+const uploadFile = (token, filePath, cb) => {
+  const url = HOST + '/personal/update-headimg?access-token=' + token;
+  console.log(url);
+  wx.uploadFile({
+    url: url,
+    method: 'POST',
+    filePath: filePath,
+    name: 'headimg',
+    success: cb
+  })
+}
+
+// 修改昵称
+const updateNickname = function(token, nickname, cb) {
+  const url = HOST + '/personal/update-username?access-token=' + token;
+  wx.request({
+    url: url,
+    method: 'POST',
+    data: { 'username': nickname },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: cb
+  })
+}
+
+// 修改性别
+const updateGender = function(token, gender, cb) {
+  const url = HOST + '/personal/update-gender?access-token=' + token;
+  wx.request({
+    url: url,
+    method: 'POST',
+    data: { 'gender': gender },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: cb
+  })
+}
+
+// ==== 钱包相关 ====
+// 获取钱包余额
+const getBalance = function(token, cb) {
+  const url = HOST + '/cards/wechat-get-balance?access-token=' + token;
+  wx.request({
+    url: url,
+    mehod: 'GET',
+    success: cb
+  })
+}
+
+// 学习卡充值
+const recharge = function(token, data, cb) {
+  const url = HOST + '/cards/wechat-recharge?access-token=' + token;
+  wx.request({
+    url: url,
+    method: 'POST',
+    data: data,
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: cb
+  })
+}
+
+// 收支明细
+const getBill = function(token, cb) {
+  const url = HOST + '/cards/coin-details?access-token=' + token;
+  wx.request({
+    url: url,
+    success: cb
+  })
+};
+
+// ==== 订单相关 ====
+const getOrder = function(token, cb) {
+  const url = HOST + '/personal/order-list?access-token=' + token;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
 
 module.exports = {
   onLogin: onLogin,
@@ -135,5 +219,12 @@ module.exports = {
   getAudioHome: getAudioHome,
   getAudioList: getAudioList,
   getAudioDetail: getAudioDetail,
-  uploadFile: uploadFile
+  uploadFile: uploadFile,
+  getPersonalInfo: getPersonalInfo,
+  updateNickname: updateNickname,
+  updateGender: updateGender,
+  getBalance: getBalance,
+  recharge: recharge,
+  getBill: getBill,
+  getOrder: getOrder
 }
