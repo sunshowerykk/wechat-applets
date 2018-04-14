@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
   <block wx:for="{{imgUrls}}" wx:key="index">
     <swiper-item>
       <image src="{{item}}" class="slide-image" height="150"/>
@@ -10,30 +10,10 @@
 
   <view class="school-container">
     <view class="header">直属学院</view>
-    <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
-      <view id="green" class="scroll-view-item_H bc_yellow" bindtap='navigatoSchool'>
-        <image src="http://kaoben.top/uploads/img/course-category/15192022687586.png"></image>
-        <view class="school-name">公共学院</view>
-      </view>
-      <view id="red"  class="scroll-view-item_H bc_blue" bindtap='navigatoSchool'>
-        <image src="http://kaoben.top/uploads/img/course-category/15147023877384.png"></image>
-        <view class="school-name">健康学院</view>
-      </view>
-      <view id="yellow" class="scroll-view-item_H bg-purper" bindtap='navigatoSchool'>
-        <image src="http://kaoben.top/uploads/img/course-category/15147025111919.png"></image>
-        <view class="school-name">书法学院</view>
-      </view>
-      <view id="blue" class="scroll-view-item_H bc_green" bindtap='navigatoSchool'>
-        <image src="http://kaoben.top/uploads/img/course-category/15147026501076.png"></image>
-        <view class="school-name">美术学院</view>
-      </view>
-      <view id="blue" class="scroll-view-item_H bg-music" bindtap='navigatoSchool'>
-        <image src="http://kaoben.top/uploads/img/course-category/15147053378338.png"></image>
-        <view class="school-name">摄影学院</view>
-      </view>
-      <view id="blue" class="scroll-view-item_H bg-wenxue" bindtap='navigatoSchool'>
-        <image src="http://kaoben.top/uploads/img/course-category/15147053635798.png"></image>
-        <view class="school-name">文学院</view>
+    <scroll-view class="scroll-view_H" scroll-x="true">
+      <view id="green" class="scroll-view-item_H {{item.bgColor}}" bindtap='navigatoSchool' wx:for="{{home.colleges}}" wx:key="{{index}}" data-id="{{item.id}}">
+        <image src="{{item.icon}}" wx:if="{{item.icon}}"></image>
+        <view class="school-name">{{item.name}}</view>
       </view>
     </scroll-view>
   </view>
@@ -41,30 +21,31 @@
     <view class="scource-item">
       <view class="select-header">
         <view>精选课程</view>
-        <view></view>
+        <view class="more">更多</view>
       </view>
-      <view class="item" bindtap='toDetail'>
-       <image src="http://www.kaoben.top/uploads/img/course/15201543373503.png"></image>
+      <view class="item" bindtap='navigateToCourse' wx:for="{{home.hotcourses}}" wx:key="{{key}}" data-id="{{item.id}}">
+       <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>
         <view class="text">
-          <view class="name">课程名：语文课</view>
-          <view class="money">价格：22元</view>
-          <view class="">截止日期: 1970-01-01</view>
+          <view class="name">课程名：{{item.course_name}}</view>
+          <view class="money">价格：{{item.discount}}元</view>
+          <view class="">在学人数: {{item.online}}</view>
         </view>
       </view>
-      <view class="item">
-        <image src="http://www.kaoben.top/uploads/img/course/15201543373503.png"></image>
-        <view class="text">
-          <view class="name">课程名：语文课</view>
-          <view class="money">价格：22元</view>
-          <view class="">截止日期: 1970-01-01</view>
-        </view>
+    </view>
+  </view>
+
+  <view class="select-list" wx:for="{{college_course}}" wx:key="{{index}}">
+    <view class="scource-item">
+      <view class="select-header">
+        <view>{{item.college_name}}</view>
+        <view class="more" bindtap='navigatoSchool' data-id="{{item.id}}">更多</view>
       </view>
-        <view class="item">
-        <image src="http://www.kaoben.top/uploads/img/course/15201543373503.png"></image>
+      <view class="item" bindtap='navigateToCourse' wx:for="{{item.college_course}}" wx:key="{{index}}" data-id="{{item.id}}" wx:for-item="course">
+       <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}"></image>
         <view class="text">
-          <view class="name">课程名：语文课</view>
-          <view class="money">价格：22元</view>
-          <view class="">截止日期: 1970-01-01</view>
+          <view class="name">课程名：{{course.course_name}}</view>
+          <view class="money">价格：{{course.discount}}元</view>
+          <view class="">在学人数: {{course.online}}</view>
         </view>
       </view>
     </view>

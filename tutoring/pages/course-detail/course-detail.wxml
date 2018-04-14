@@ -1,10 +1,37 @@
 <!--pages/course-detail/course-detail.wxml-->
 <view class="container">
   <image src="http://kaoben.top/uploads/img/course/15201524716522.png"></image>
-  <view class="des-content">
-    <view>语文</view>
+  <view class="table-title">
+    <view class="title-item {{index === key ? 'active' : ''}}" bindtap='handleTableClick' data-id="{{index}}" wx:for="{{tableList}}" wx:key="{{index}}">{{item}}</view>
   </view>
-  <view class="video-list">
-
+  <view class="course-content">
+    <swiper bindchange="onScroll" current="{{key}}">
+      <swiper-item>
+          <view class="content">
+            <view class="current-money">现价：$1.00</view>
+            <view class="origin-money">原价：$4.00</view>
+          </view>
+          <view class="teacher-container">
+            <view class="teacher-title">讲师简介</view>
+            <view class="teader-header">
+              <image src="http:\/\/api.kaoben.top\/uploads\/img\/teacher\/15148811008495.png"></image>
+              <view class="teacher-info">
+                <view>范冰冰</view>
+                <view class="gray-bg">人大教授</view>
+              </view>
+            </view>
+            <view class="gray-bg">hhh</view>
+          </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="content">dfsasda</view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="footer">
+    <view class="footer-buy">
+      已有<text class="footer-money">300</text>人购买
+    </view>
+    <button class="buy-btn">购买：200元</button>
   </view>
 </view>

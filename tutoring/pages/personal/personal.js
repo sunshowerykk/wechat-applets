@@ -6,7 +6,8 @@ Page({
    */
   data: {
     personalInfo: {},
-    balance: '0.00'
+    balance: '0.00',
+    unReadMessages: 0
   },
 
   /**
@@ -29,6 +30,7 @@ Page({
   onShow: function () {
     this.getPersonalInfo();
     this.getBalance();
+    this.getMessage();
   },
 
   /**
@@ -144,6 +146,23 @@ Page({
           balance: data.balance
         });
       }
+    })
+  },
+  // 查询消息列表
+  getMessage: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    request.getMessageList(token, function(res) {
+      var data = res.data || [];
+      var unReadMessages = 0;
+      data.forEach(message => {
+        if (message.status === 0) {
+          unReadMessages++;
+        }
+      });
+      that.setData({
+        unReadMessages: unReadMessages
+      });
     })
   },
   // 登出

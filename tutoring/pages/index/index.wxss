@@ -61,31 +61,46 @@ page {
   font-size: 16px;
 }
 
-.bg-purper {
+.bg_purper {
   background: #e994dc;
 }
 
-.bg-music {
+.bg_music {
   background: #e3b47b
 }
 
-.bg-wenxue {
+.bg_wenxue {
   background: #848d99;
 }
 
 .select-list {
   background: #fff;
   padding: 30rpx 20rpx;
+  margin-bottom: 10px;
 }
 
 .select-header {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 5rpx;
+}
+
+.more {
+  font-size: 14px;
+  color: #fff;
+  padding: 2px 12px;
+  background: #bbb;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 12px;
 }
 
 .text {
   padding: 5rpx 10rpx;
-  line-height: 30px;
+  line-height: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,8 +120,8 @@ page {
   color: #333;
 }
 .select-list image {
-  width: 200rpx;
-  height: 230rpx;
+  width: 293rpx;
+  height: 180rpx;
   margin-right: 20rpx;
   border-radius: 5px;
 }

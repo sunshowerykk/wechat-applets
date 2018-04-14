@@ -1,19 +1,20 @@
 // pages/message/message.js
+const request = require('../../utils/request.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    messageList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
+    this.getMessageList();
+  }, 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -66,9 +67,34 @@ Page({
   /**
    * to detail
    */
-  toDetail: function() {
+  toDetail: function(event) {
+    var id = event.currentTarget.dataset.id;
+    if (id === '') return;
     wx.navigateTo({
-      url: '/pages/message-detail/message-detail',
+      url: '/pages/message-detail/message-detail?id=' + id,
     })
-  }
+  },
+  /**
+   * get mesages
+   */
+  getMessageList: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    request.getMessageList(token, function(res) {
+      const data = res.data || [];
+      if (data.status == '401') {
+        that.backToLogin();
+        return;
+      }
+      that.setData({
+        messageList: data
+      });
+    });
+  },
+  // 返回登录页
+  backToLogin: function () {
+    wx.reLaunch({
+      url: '/pages/login/login?redirect_url=' + encodeURIComponent('/pages/message/message')
+    })
+  },
 })

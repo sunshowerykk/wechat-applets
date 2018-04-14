@@ -84,5 +84,9 @@ Page({
     wx.reLaunch({
       url: '/pages/login/login?redirect_url=' + encodeURIComponent('/pages/order/order'),
     })
+  },
+  // 去支付
+  handlePay: function(event) {
+    console.log(event.target.dataset.sn);
   }
 })

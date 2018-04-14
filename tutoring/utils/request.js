@@ -211,6 +211,39 @@ const getOrder = function(token, cb) {
   })
 }
 
+// ==== 消息相关 ====
+// 获取消息列表
+const getMessageList = function(token, cb) {
+  const url = HOST + '/personal/message-list?access-token=' + token;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+// 消息详情
+const getMessageDetail = function(token, data, cb) {
+  const url = HOST + '/personal/message-view?access-token=' + token;
+  wx.request({
+    url: url,
+    method: 'POST',
+    data: data,
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: cb
+  })
+}
+
+// ==== 首页相关 ====
+// 首页总接口
+const getHome = function(cb) {
+  const url = HOST;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
 module.exports = {
   onLogin: onLogin,
   onRegister: onRegister,
@@ -226,5 +259,8 @@ module.exports = {
   getBalance: getBalance,
   recharge: recharge,
   getBill: getBill,
-  getOrder: getOrder
+  getOrder: getOrder,
+  getMessageList: getMessageList,
+  getMessageDetail: getMessageDetail,
+  getHome: getHome
 }

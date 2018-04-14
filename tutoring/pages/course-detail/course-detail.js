@@ -5,14 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    key: 0,
+    tableList: ['课程简介', '课程目录']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var id = options.id;
+
   },
 
   /**
@@ -62,5 +64,22 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  // 获取课程详情
+  getCourseDetail: function(id) {
+    
+  },
+  handleTableClick: function(event) {
+    var id = event.target.dataset.id;
+    this.setData({
+      key: id
+    });
+  },
+  // 滑动事件
+  onScroll: function(event) {
+    var current = event.detail.current;
+    this.setData({
+      key: current
+    });
   }
 })

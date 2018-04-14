@@ -49,3 +49,12 @@ button {
   color: #fff;
   background: #f09135;
 }
+
+.name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.item-count {
+  font-size: 16px;
+}
