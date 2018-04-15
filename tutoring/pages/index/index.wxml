@@ -11,7 +11,7 @@
   <view class="school-container">
     <view class="header">直属学院</view>
     <scroll-view class="scroll-view_H" scroll-x="true">
-      <view id="green" class="scroll-view-item_H {{item.bgColor}}" bindtap='navigatoSchool' wx:for="{{home.colleges}}" wx:key="{{index}}" data-id="{{item.id}}">
+      <view id="green" class="scroll-view-item_H {{item.bgColor}}" bindtap='navigatoSchools' wx:for="{{home.colleges}}" wx:key="{{index}}" data-id="{{item.id}}">
         <image src="{{item.icon}}" wx:if="{{item.icon}}"></image>
         <view class="school-name">{{item.name}}</view>
       </view>
@@ -38,7 +38,7 @@
     <view class="scource-item">
       <view class="select-header">
         <view>{{item.college_name}}</view>
-        <view class="more" bindtap='navigatoSchool' data-id="{{item.id}}">更多</view>
+        <view class="more" bindtap='navigatoSchool' data-id="{{item.catid}}">更多</view>
       </view>
       <view class="item" bindtap='navigateToCourse' wx:for="{{item.college_course}}" wx:key="{{index}}" data-id="{{item.id}}" wx:for-item="course">
        <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}"></image>

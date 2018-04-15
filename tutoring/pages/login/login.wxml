@@ -15,4 +15,7 @@
 <view class="btn-wrapper">
   <button class="btn active" bindtap='onLogin'>登录</button>
 </view>
+<view class="btn-wrapper2">
+  <button class="index-btn" bindtap='goToIndex'>返回首页</button>
+</view>
 </view>

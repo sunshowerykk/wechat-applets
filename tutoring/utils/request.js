@@ -1,7 +1,9 @@
 const util = require('./util.js');
 
-const HOST = 'http://api.kaoben.top';
+const HOST = 'https://api.kaoben.top';
 
+// ==== 账号相关 ====
+// 登录
 const onLogin = (data, redirectUrl) => {
   let url = `${HOST}/users/login`;
   wx.request({
@@ -34,6 +36,7 @@ const onLogin = (data, redirectUrl) => {
   })
 };
 
+// 注册
 const onRegister = (data, redirectUrl) => {
   var url = HOST + '/users/signup';
   wx.request({
@@ -54,6 +57,7 @@ const onRegister = (data, redirectUrl) => {
   })
 }
 
+// 获取验证码
 const getCaptcha = data => {
   var url = `${HOST}/users/logincode`
   wx.request({
@@ -69,6 +73,7 @@ const getCaptcha = data => {
   })
 }
 
+// 重置密码
 const onResetPassword = (data, redirectUrl) => {
   var url = HOST + '/users/changepassword';
   wx.request({
@@ -234,10 +239,39 @@ const getMessageDetail = function(token, data, cb) {
   })
 }
 
+// 我的课程列表
+const getMyCourse = function(token, cb) {
+  var url = HOST + '/personal/course-list?access-token=' + token;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
 // ==== 首页相关 ====
 // 首页总接口
 const getHome = function(cb) {
   const url = HOST;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
+// ==== 课程相关 ====
+// 课程详情
+const getCourseDetail = function(id, cb) {
+  const url = HOST + '/courses/detail?courseid=' + id;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
+// ==== 学院相关 ====
+// 学院课程列表
+const getSchoolCourse = function(id, cb) {
+  const url = HOST + '/courses/college?cat=' + id;
   wx.request({
     url: url,
     success: cb
@@ -262,5 +296,8 @@ module.exports = {
   getOrder: getOrder,
   getMessageList: getMessageList,
   getMessageDetail: getMessageDetail,
-  getHome: getHome
+  getHome: getHome,
+  getCourseDetail: getCourseDetail,
+  getMyCourse: getMyCourse,
+  getSchoolCourse: getSchoolCourse
 }

@@ -109,5 +109,13 @@ Page({
       key: 'token',
       data: token,
     })
+  },
+  /**
+   * 返回首页
+   */
+  goToIndex: function() {
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
   }
 })

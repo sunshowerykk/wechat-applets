@@ -139,6 +139,7 @@ Page({
   getBalance: function() {
     var that = this;
     var token = wx.getStorageSync('token');
+    if (!token) return;
     request.getBalance(token, function(res) {
       var data = res.data;
       if (data.status === '200' && data.balance) {
@@ -152,6 +153,7 @@ Page({
   getMessage: function() {
     var that = this;
     var token = wx.getStorageSync('token');
+    if (!token) return;
     request.getMessageList(token, function(res) {
       var data = res.data || [];
       var unReadMessages = 0;

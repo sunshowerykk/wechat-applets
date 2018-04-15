@@ -1,20 +1,18 @@
-// pages/school-detail/school-detail.js
-const request = require('../../utils/request.js');
+// pages/course-all/course-all.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    courseList: []
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var id = options.id;
-    this.getSchoolCourse(id);
+  
   },
 
   /**
@@ -64,21 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  // 获取学院下面的课程
-  getSchoolCourse: function(id) {
-    var that = this;
-    request.getSchoolCourse(id, function(res) {
-      that.setData({
-        courseList: res.data
-      });
-    })
-  },
-  // 到课程详情
-  toDetail: function(event) {
-    var id = event.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/course-detail/course-detail?id=' + id,
-    })
   }
 })

@@ -18,7 +18,8 @@
     "pages/course/course",
     "pages/course-detail/course-detail",
     "pages/school-detail/school-detail",
-    "pages/info-input/info-input"
+    "pages/info-input/info-input",
+    "pages/course-all/course-all"
   ],
   "window": {
     "backgroundTextStyle": "light",

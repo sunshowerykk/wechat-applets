@@ -78,6 +78,7 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABze
   margin-top: 40px;
   text-align: center;
   padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -111,5 +112,16 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABze
 
 .captcha-btn.disabled {
   color: #ccc;
+}
+.btn-wrapper2 {
+   position: absolute;
+   bottom: 50px;
+   padding: 0 15px;
+   left: 0;
+   right: 0;
+
+}
+.index-btn {
+  width: 100%;
 }
 

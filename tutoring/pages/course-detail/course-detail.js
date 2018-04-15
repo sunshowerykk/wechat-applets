@@ -1,4 +1,5 @@
 // pages/course-detail/course-detail.js
+const request = require('../../utils/request.js');
 Page({
 
   /**
@@ -6,7 +7,10 @@ Page({
    */
   data: {
     key: 0,
-    tableList: ['课程简介', '课程目录']
+    tableList: ['课程简介', '课程目录'],
+    detail: {},
+    isPlay: false,
+    videoUrl: '',
   },
 
   /**
@@ -14,7 +18,8 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id;
-
+    this.getCourseDetail(2);
+    this.videoContext = wx.createVideoContext('myVideo');
   },
 
   /**
@@ -81,5 +86,25 @@ Page({
     this.setData({
       key: current
     });
+  },
+  // 请求课程详情
+  getCourseDetail: function(id) {
+    var that = this;
+    request.getCourseDetail(id, function(res) {
+      var detail = res.data;
+      that.setData({
+        detail: detail
+      });
+    })
+  },
+  // 点击观看
+  handleWatch: function(event) {
+    var id = event.target.dataset.id;
+    var url = event.target.dataset.url;
+    this.setData({
+      isPlay: true,
+      videoUrl: url
+    });
+    this.videoContext.play();
   }
 })

@@ -1,6 +1,7 @@
 <!--pages/course-detail/course-detail.wxml-->
 <view class="container">
-  <image src="http://kaoben.top/uploads/img/course/15201524716522.png"></image>
+  <video id="myVideo" src="{{videoUrl}}" wx:if="{{isPlay}}"></video>
+  <image src="{{detail.course.home_pic}}" wx:else></image>
   <view class="table-title">
     <view class="title-item {{index === key ? 'active' : ''}}" bindtap='handleTableClick' data-id="{{index}}" wx:for="{{tableList}}" wx:key="{{index}}">{{item}}</view>
   </view>
@@ -8,23 +9,35 @@
     <swiper bindchange="onScroll" current="{{key}}">
       <swiper-item>
           <view class="content">
-            <view class="current-money">现价：$1.00</view>
-            <view class="origin-money">原价：$4.00</view>
+            <view class="current-money">现价：{{detail.course.discount}}元</view>
+            <view class="origin-money">原价：{{detail.course.price}}元</view>
           </view>
           <view class="teacher-container">
             <view class="teacher-title">讲师简介</view>
             <view class="teader-header">
-              <image src="http:\/\/api.kaoben.top\/uploads\/img\/teacher\/15148811008495.png"></image>
+              <image src="{{detail.teacher.teacher_img}}" wx:if="{{detail.teacher.teacher_img}}"></image>
               <view class="teacher-info">
-                <view>范冰冰</view>
-                <view class="gray-bg">人大教授</view>
+                <view>{{detail.teacher.teacher_name}}</view>
+                <view class="gray-bg">{{detail.teacher.office}}</view>
               </view>
             </view>
-            <view class="gray-bg">hhh</view>
+            <view class="gray-bg">{{detail.teacher.teacher_tag}}</view>
+          </view>
+          <view class="teacher-container">
+            <view class="teacher-title">课程简介</view>
+            <view class="">{{detail.course.intro}}</view>
           </view>
       </swiper-item>
       <swiper-item>
-        <view class="content">dfsasda</view>
+        <view class="course-list">
+          <view wx:for="{{detail.chapter}}" wx:key="{{index}}">
+            <view class="course-list__header">{{item.chapter_name}}</view>
+            <view class="course-list__item" wx:for="{{item.section}}" wx:key="{{index}}" wx:for-item="section">
+              <view>{{section.name}}</view>
+              <button class="play-btn" bindtap="handleWatch" data-id="{{section.section_id}}" data-url="{{section.url}}">{{section.video_type_text}}</button>
+            </view>
+          </view>
+        </view>
       </swiper-item>
     </swiper>
   </view>

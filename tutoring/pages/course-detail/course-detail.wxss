@@ -75,7 +75,7 @@ button {
 }
 
 swiper {
-  min-height: 500px;
+  min-height: 800px;
   background: #f5f5f5;
 }
 
@@ -129,4 +129,38 @@ swiper {
 
 .gray-bg {
   color: #999;
+}
+
+.course-list {
+  padding-bottom: 200rpx;
+}
+
+.course-list__header {
+  background: #f7f9fb;
+  padding: 30rpx 44rpx;
+  border: 1px solid #f5f5f5;
+}
+
+.course-list__item {
+  background: #fff;
+  padding: 40rpx 44rpx;
+}
+
+video {
+  width: 100%;
+}
+
+.course-list__item {
+  font-size: 16px;
+  border-bottom: 1px solid #ebebeb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-btn {
+  font-size: 12px;
+  color: #f88c24;
+  border: 1px solid #f88c24;
+  background: transparent;
 }

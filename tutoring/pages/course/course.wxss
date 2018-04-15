@@ -28,8 +28,8 @@ page {
   color: #333;
 }
 image {
-  width: 200rpx;
-  height: 230rpx;
+  width: 293rpx;
+  height: 180rpx;
   margin-right: 20rpx;
   border-radius: 5px;
 }

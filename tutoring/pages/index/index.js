@@ -22,6 +22,12 @@ Page({
   },
   // 去学院详情
   navigatoSchool: function(event) {
+    var id = event.target.dataset.id;
+    wx.navigateTo({
+      url: '/pages/school-detail/school-detail?id=' + id,
+    })
+  },
+  navigatoSchools: function(event) {
     var id = event.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/school-detail/school-detail?id=' + id,
@@ -56,9 +62,9 @@ Page({
     switch(index) {
       case 0: return 'bc_green';
       case 1: return 'bc_yellow';
-      case 2: return 'bc_red';
+      case 2: return 'bg_purper';
       case 3: return 'bc_blue';
-      case 4: return 'bg_purper';
+      case 4: return 'bc_red';
       case 5: return 'bg_music';
       case 6: return 'bg_wenxue';
       default: return 'bc_blue'
