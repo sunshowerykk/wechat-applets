@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/pay/pay",
     "pages/login/login",
     "pages/personal/personal",
     "pages/logs/logs",
@@ -19,7 +20,9 @@
     "pages/course-detail/course-detail",
     "pages/school-detail/school-detail",
     "pages/info-input/info-input",
-    "pages/course-all/course-all"
+    "pages/course-all/course-all",
+    "pages/order-confirm/order-confirm"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

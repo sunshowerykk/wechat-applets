@@ -155,6 +155,7 @@ Page({
     var token = wx.getStorageSync('token');
     if (!token) return;
     request.getMessageList(token, function(res) {
+      if (res.statusCode === 401) return;
       var data = res.data || [];
       var unReadMessages = 0;
       data.forEach(message => {

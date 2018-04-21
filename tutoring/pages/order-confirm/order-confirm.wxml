@@ -1,0 +1,19 @@
+<!--pages/order-confirm/order-confirm.wxml-->
+<view class="container">
+  <view class="item">
+    <view class="header">
+      <view class="status">订单详情</view>
+    </view>
+    <view class="content">
+      <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}"></image>
+      <view>
+        <view class="name">{{course.course_name}}</view>
+        <view class="item-count">{{course.discount}}元</view>
+      </view>
+    </view>
+    <view class="footer">总价：<text class="red">{{course.discount}}</text>元</view>
+  </view>
+
+  <button class="btn" bindtap='confirm'>确认订单</button>
+  <button bindtap='BackToIndex'>返回首页</button>
+</view>

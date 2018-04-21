@@ -92,6 +92,7 @@ Page({
     console.log(token, filePath);
     request.uploadFile(token, filePath, function(res) {
       var data = res.data;
+      console.log(res);
       try {
         data = JSON.parse(data)
       } catch(e) {

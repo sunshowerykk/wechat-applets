@@ -20,8 +20,7 @@ const onLogin = (data, redirectUrl) => {
           key: 'token',
           data: token,
         });
-
-        var redirectUrl = redirectUrl || '/pages/personal/personal';
+        redirectUrl = redirectUrl || '/pages/personal/personal';
         wx.reLaunch({
           url: redirectUrl,
           fail: function (err) {
@@ -33,6 +32,15 @@ const onLogin = (data, redirectUrl) => {
         util.showToast(errorMsg);
       }
     }
+  })
+};
+
+// 是否登录
+const isLogin = function(token, cb) {
+  var url = HOST + '/users/islogin?access-token=' + token;
+  wx.request({
+    url: url,
+    success: cb
   })
 };
 
@@ -208,10 +216,24 @@ const getBill = function(token, cb) {
 };
 
 // ==== 订单相关 ====
+// 获取个人订单信息
 const getOrder = function(token, cb) {
   const url = HOST + '/personal/order-list?access-token=' + token;
   wx.request({
     url: url,
+    success: cb
+  })
+};
+// 确认订单
+const confirmOrder = function(token, id, cb) {
+  var url = HOST + '/order/confirm-order?access-token=' + token;
+  wx.request({
+    url: url,
+    method: 'POST',
+    data: { course_id: id },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
     success: cb
   })
 }
@@ -261,9 +283,37 @@ const getHome = function(cb) {
 // ==== 课程相关 ====
 // 课程详情
 const getCourseDetail = function(id, cb) {
-  const url = HOST + '/courses/detail?courseid=' + id;
+  const token = wx.getStorageSync('token') || '';
+  const url = HOST + '/courses/detail?courseid=' + id + '&access-token=' + token;
   wx.request({
     url: url,
+    success: cb
+  })
+}
+// 课程信息
+const getCourseInfo = function(id, cb) {
+  const token = wx.getStorageSync('token');
+  const url = HOST + '/order/courseinfo?access-token=' + token;
+  wx.request({
+    url: url,
+    method: 'POST',
+    data: { course_id: id },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: cb
+  })
+}
+// 章节权限验证接口
+const getCourseAuth = function(token, data, cb) {
+  const url = HOST + '/courses/check?access-token=' + token;
+  wx.request({
+    url: url,
+    data: data,
+    method: 'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
     success: cb
   })
 }
@@ -272,6 +322,16 @@ const getCourseDetail = function(id, cb) {
 // 学院课程列表
 const getSchoolCourse = function(id, cb) {
   const url = HOST + '/courses/college?cat=' + id;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
+// ==== 支付相关 ====
+// code 2 openid
+const code2openid = function(code, cb) {
+  const url = HOST + '/user/onlogin?code=' + code;
   wx.request({
     url: url,
     success: cb
@@ -299,5 +359,10 @@ module.exports = {
   getHome: getHome,
   getCourseDetail: getCourseDetail,
   getMyCourse: getMyCourse,
-  getSchoolCourse: getSchoolCourse
+  getSchoolCourse: getSchoolCourse,
+  code2openid: code2openid,
+  getCourseInfo: getCourseInfo,
+  isLogin: isLogin,
+  confirmOrder: confirmOrder,
+  getCourseAuth: getCourseAuth
 }

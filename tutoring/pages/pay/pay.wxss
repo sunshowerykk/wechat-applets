@@ -1,0 +1,63 @@
+/* pages/pay/pay.wxss */
+page {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #f4f4f4;
+}
+.title {
+  font-size: 22px;
+  text-align: center;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.container {
+  padding: 25rpx 0;
+  font-size: 16px;
+}
+
+button {
+  background: #f09135;
+  color: #fff;
+  margin: 40px 25rpx 0;
+}
+
+.order {
+  padding: 35rpx 25rpx;
+  line-height: 25px;
+  background: #fff;
+  margin-bottom: 25rpx;
+}
+
+.options {
+  font-size: 14px;
+  padding: 0 25rpx;
+  line-height: 26px;
+  color: #999;
+}
+
+.pay-type {
+  padding: 25rpx 25rpx;
+  background: #fff;
+  margin-bottom: 25rpx;
+}
+
+.quan {
+  padding: 25rpx 25rpx;
+  background: #fff;
+}
+
+.pay-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+
+
+.radio {
+  margin-right: 10rpx;
+}

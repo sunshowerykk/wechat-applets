@@ -45,6 +45,10 @@
     <view class="footer-buy">
       已有<text class="footer-money">300</text>人购买
     </view>
-    <button class="buy-btn">购买：200元</button>
+    <button class="buy-btn" bindtap='handlePay' wx:if="{{detail.course.ispay === 0}}">购买：{{detail.course.price}}元</button>
+    <block wx:if="{{detail.course.ispay}}">
+      <view class="info-text" wx:if="{{detail.course.ispay === 1}}">公开课程</view>
+      <view class="info-text" wx:else>已购课程</view>
+    </block>
   </view>
 </view>

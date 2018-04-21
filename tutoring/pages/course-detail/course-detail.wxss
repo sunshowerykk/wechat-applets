@@ -69,6 +69,10 @@ image {
   font-size: 16px;
 }
 
+.info-text {
+  color: #f88c24;
+}
+
 button {
   text-align: right;
   margin-right: 0;

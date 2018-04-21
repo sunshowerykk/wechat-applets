@@ -7,7 +7,6 @@ Page({
    */
   data: {
     token: '',
-    redirectUrl: '',
     password: '',
     username: ''
   },
@@ -18,9 +17,9 @@ Page({
   onLoad: function (options) {
     var token = wx.getStorageSync('token') || '';
     var redirectUrl = options.redirect_url || '';
+    this.redirectUrl = redirectUrl;
     this.setData({
-      token: token,
-      redirectUrl: redirectUrl
+      token: token
     });
   },
 
@@ -98,7 +97,7 @@ Page({
       phone: this.data.username,
       password: this.data.password
     }
-    var redirectUrl = this.data.redirectUrl;
+    var redirectUrl = this.redirectUrl;
     request.onLogin(data, redirectUrl);
   },
   /**

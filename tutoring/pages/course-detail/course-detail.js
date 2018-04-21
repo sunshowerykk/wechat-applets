@@ -18,7 +18,8 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id;
-    this.getCourseDetail(2);
+    this.getCourseDetail(id);
+    this.id = id;
     this.videoContext = wx.createVideoContext('myVideo');
   },
 
@@ -99,12 +100,55 @@ Page({
   },
   // 点击观看
   handleWatch: function(event) {
-    var id = event.target.dataset.id;
+    var courseId = this.id;
+    var capterId = event.target.dataset.id;
     var url = event.target.dataset.url;
+    var token = wx.getStorageSync('token');
+    var data = {
+      'course_id': courseId,
+      'section_id': capterId
+    }
+    if (!token) {
+      this.redirectLogin();
+      return;
+    }
+
     this.setData({
       isPlay: true,
       videoUrl: url
     });
     this.videoContext.play();
+  },
+  // 点击购买事件
+  handlePay: function() {
+    var that = this;
+    var id = this.id;
+    var token = wx.getStorageSync('token');
+    
+    // 判断token
+    if (!token) {
+      this.redirectLogin();
+      return;
+    }
+    // 请求接口判断
+    request.isLogin(token, function(res) {
+      var data = res.data;
+      if (data.status === 1) {
+        wx.redirectTo({
+          url: '/pages/order-confirm/order-confirm?id=' + that.id,
+        })
+      } else {
+        that.redirectLogin();
+      }
+    })
+  },
+  // 跳转登录页
+  redirectLogin: function() {
+    var id = this.id;
+    var pageUrl = '/pages/course-detail/course-detail?id=' + id;
+    var url = '/pages/login/login?redirect_url=' + encodeURIComponent(pageUrl);
+    wx.redirectTo({
+      url: url,
+    })
   }
 })

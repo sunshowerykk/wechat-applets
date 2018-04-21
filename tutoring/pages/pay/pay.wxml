@@ -1,0 +1,37 @@
+<!--pages/pay/pay.wxml-->
+<view class="container">
+  <view class="options">订单详情</view>
+  <view class="order">
+    <view>订单编号：KB-201804211149275858548510</view>
+    <view>应付金额：￥1</view>
+  </view>
+  <view class="options">选择支付方式</view>
+  <view class="pay-type">
+    <radio-group>
+      <label class="pay-item">
+        <view class="radio">
+          <radio></radio>
+        </view>
+        <view >微信支付</view>
+      </label>
+      <label class="pay-item">
+        <view class="radio">
+          <radio></radio>
+        </view>
+        <view >钱包支付</view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="options">是否使用优惠券</view>
+  <view class="quan">
+    <label class="pay-item">
+      <view class="radio">
+        <radio></radio>
+      </view>
+      <view >优惠券：30元</view>
+    </label>
+  </view>
+
+  <button>确认付款</button>
+</view>
+

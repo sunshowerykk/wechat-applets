@@ -34,18 +34,18 @@
     </view>
   </view>
 
-  <view class="select-list" wx:for="{{college_course}}" wx:key="{{index}}">
+  <view class="select-list" wx:for="{{college_course}}" wx:key="{{index}}" wx:for-item="school">
     <view class="scource-item">
       <view class="select-header">
-        <view>{{item.college_name}}</view>
-        <view class="more" bindtap='navigatoSchool' data-id="{{item.catid}}">更多</view>
+        <view>{{school.college_name}}</view>
+        <view class="more" bindtap='navigatoSchool' data-id="{{school.catid}}">更多</view>
       </view>
-      <view class="item" bindtap='navigateToCourse' wx:for="{{item.college_course}}" wx:key="{{index}}" data-id="{{item.id}}" wx:for-item="course">
-       <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}"></image>
-        <view class="text">
-          <view class="name">课程名：{{course.course_name}}</view>
-          <view class="money">价格：{{course.discount}}元</view>
-          <view class="">在学人数: {{course.online}}</view>
+      <view class="item" bindtap='navigateToCourse' wx:for="{{school.college_course}}" wx:key="{{index}}" wx:for-item="course" data-id="{{course.id}}">
+       <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}" data-id="{{course.id}}"></image>
+        <view class="text" data-id="{{course.id}}">
+          <view class="name" data-id="{{course.id}}">课程名：{{course.course_name}}</view>
+          <view class="money" data-id="{{course.id}}">价格：{{course.discount}}元</view>
+          <view class="" data-id="{{course.id}}">在学人数: {{course.online}}</view>
         </view>
       </view>
     </view>
