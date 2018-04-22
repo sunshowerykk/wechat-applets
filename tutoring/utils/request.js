@@ -351,6 +351,15 @@ const pay = function(data, cb) {
   })
 }
 
+// 检查订单支付状态
+const checkOrderStatus = function(cb) {
+  const url = HOST + '/orderinfo/wxcheckorder';
+  wx.request({
+    url: url,
+    complete: cb
+  })
+}
+
 // 获取订单详情
 const getOrderInfo = function(token, sn, cb) {
   var url = HOST + '/order/orderinfo?access-token=' + token + '&order_sn=' + sn;
@@ -388,5 +397,6 @@ module.exports = {
   confirmOrder: confirmOrder,
   getCourseAuth: getCourseAuth,
   getOrderInfo: getOrderInfo,
-  pay: pay
+  pay: pay,
+  checkOrderStatus: checkOrderStatus
 }

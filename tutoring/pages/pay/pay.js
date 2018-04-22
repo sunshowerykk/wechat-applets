@@ -1,5 +1,6 @@
 // pages/pay/pay.js
 const request = require('../../utils/request.js');
+const util = require('../../utils/util.js');
 Page({
   /**
    * 页面的初始数据
@@ -168,6 +169,7 @@ Page({
   handlePay: function() {
     var that = this;
     var token = wx.getStorageSync('token');
+  
     this.login(function(code) {
       var data = {
         token: token,
@@ -176,10 +178,51 @@ Page({
         coupon_id: -1,
         use_coin: 0
       }
-      console.log(data);
+      if (that.data.isWallet) data.use_coin = 1;
+      if (that.data.coupon.coupon_id) data.coupon_id = that.data.coupon.coupon_id;
       request.pay(data, function(res) {
-        console.log(res);
+        var data = res.data;
+        if (data.code < 0) {
+          util.showToast('支付失败，请稍后再试...');
+          return;
+        }
+
+        if (data.wxpay === 0) {
+          util.showToast('支付成功');
+          that.navigateToOrderPage();
+          return;
+        }
+
+        if (data.wxpay === 1) {
+          var payOptions = data.wxpaydata;
+          payOptions.success = function(res) {
+            console.log(res);
+            if (res.errMsg === 'requestPayment:ok') {
+              that.checkOrderStatus();
+              util.showToast('支付成功');
+              that.navigateToOrderPage();
+            } else {
+              util.showToast('支付失败');
+            }
+          };
+          payOptions.complete = function(final) {
+            console.log(final);
+          }
+          wx.requestPayment(payOptions);
+        }
       })
+    })
+  },
+  // 跳转至订单页
+  navigateToOrderPage: function() {
+    wx.reLaunch({
+      url: '/pages/order/order',
+    })
+  },
+  // 检查订单状态
+  checkOrderStatus: function() {
+    request.checkOrderStatus(function(res) {
+
     })
   }
 })
