@@ -1,19 +1,27 @@
 // pages/pay/pay.js
 const request = require('../../utils/request.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-  
+    balance: '0.00',
+    isWallet: false,
+    isError: false,
+    order: {},
+    showQuan: false,
+    isUseYHQ: true,
+    coupon: {},
+    needPay: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.login();
+    this.sn = options.sn;
+    this.getBalance();
+    this.getOrderInfo();
   },
 
   /**
@@ -67,12 +75,12 @@ Page({
   /**
    * code to openid
    */
-  login: function() {
+  login: function(cb) {
     var that = this;
     wx.login({
       success: function(res) {
         if (res.code) {
-          that.codeToOpenid(res.code);
+          cb(res.code)
         }
       }
     })
@@ -83,6 +91,95 @@ Page({
   codeToOpenid: function(code) {
     request.code2openid(code, function (res) {
       console.log(res.data);
+    })
+  },
+  // 获取钱包余额
+  getBalance: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    request.getBalance(token, function(res) {
+      that.setData({
+        balance: res.data.balance
+      });
+    })
+  },
+  // 
+  radioChange: function (event) {
+    
+  },
+  handleWalletClick: function(event) {
+    var isCheck = !this.data.isWallet;
+    this.setData({
+      isWallet: isCheck
+    });
+  },
+  getOrderInfo: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    var sn = this.sn;
+    request.getOrderInfo(token, sn, function(res) {
+      if (res.data.code !== 0) {
+        that.setData({
+          isError: true
+        });
+        return;
+      }
+      that.setData({
+        order: res.data,
+        needPay: res.data.order_info.order_amount
+      });
+    })
+  },
+  // 展示优惠券
+  showQuan: function() {
+    this.setData({
+      showQuan: true
+    });
+  },
+  // 不使用优惠券
+  noQuanClick: function() {
+    this.setData({
+      showQuan: false,
+      isUseYHQ: false,
+      coupon: {}
+    });
+  },
+  // 选择了哪个优惠券
+  selectYHQ: function(event) {
+    var that = this;
+    var id = event.currentTarget.dataset.id;
+    this.coinId = id;
+    var coupon = that.data.order.coupon[id];
+    var needPay = that.data.needPay - coupon.fee;
+    if (needPay < 0) {
+      needPay = '0.00'
+    } else {
+      needPay = needPay.toFixed(2);
+    }
+    this.setData({
+      showQuan: false,
+      isUseYHQ: true,
+      coupon: coupon,
+      needPay: needPay
+    });
+
+  },
+  // handle pay
+  handlePay: function() {
+    var that = this;
+    var token = wx.getStorageSync('token');
+    this.login(function(code) {
+      var data = {
+        token: token,
+        code: code,
+        sn: that.sn,
+        coupon_id: -1,
+        use_coin: 0
+      }
+      console.log(data);
+      request.pay(data, function(res) {
+        console.log(res);
+      })
     })
   }
 })

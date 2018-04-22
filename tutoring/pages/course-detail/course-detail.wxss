@@ -110,6 +110,7 @@ swiper {
 .teader-header {
   display: flex;
   margin-bottom: 20rpx;
+  height: 126rpx;
 }
 
 .teacher-title {

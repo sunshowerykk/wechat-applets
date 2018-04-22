@@ -1,5 +1,6 @@
 // pages/message-detail/message-detail.js
 var request = require('../../utils/request.js');
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -13,7 +14,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     var id = options.id;
     this.getMessageDetail(id);
   },
@@ -78,6 +78,7 @@ Page({
         that.backToLogin();
         return;
       }
+      WxParse.wxParse('message', 'html', data.content, that, 0);
       that.setData({
         messsageDetail: data
       });

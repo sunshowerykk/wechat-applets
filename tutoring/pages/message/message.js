@@ -86,6 +86,9 @@ Page({
         that.backToLogin();
         return;
       }
+      data.forEach(item => {
+        item.content = item.content.replace(/<p>|<\/p>/g, '');
+      })
       that.setData({
         messageList: data
       });

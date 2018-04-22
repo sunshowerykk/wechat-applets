@@ -21,7 +21,6 @@
     <view class="scource-item">
       <view class="select-header">
         <view>精选课程</view>
-        <view class="more">更多</view>
       </view>
       <view class="item" bindtap='navigateToCourse' wx:for="{{home.hotcourses}}" wx:key="{{key}}" data-id="{{item.id}}">
        <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>

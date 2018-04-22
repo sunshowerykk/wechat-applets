@@ -276,7 +276,7 @@ const getHome = function(cb) {
   const url = HOST;
   wx.request({
     url: url,
-    success: cb
+    complete: cb
   })
 }
 
@@ -338,6 +338,28 @@ const code2openid = function(code, cb) {
   })
 }
 
+// 支付
+const pay = function(data, cb) {
+  const url = HOST + '/order/pay?access-token=' + data.token 
+    + '&order_sn=' + data.sn 
+    + '&code=' + data.code 
+    + '&coupon_id=' + data.coupon_id 
+    + '&use_coin=' + data.use_coin;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
+// 获取订单详情
+const getOrderInfo = function(token, sn, cb) {
+  var url = HOST + '/order/orderinfo?access-token=' + token + '&order_sn=' + sn;
+  wx.request({
+    url: url,
+    success: cb
+  })
+}
+
 module.exports = {
   onLogin: onLogin,
   onRegister: onRegister,
@@ -364,5 +386,7 @@ module.exports = {
   getCourseInfo: getCourseInfo,
   isLogin: isLogin,
   confirmOrder: confirmOrder,
-  getCourseAuth: getCourseAuth
+  getCourseAuth: getCourseAuth,
+  getOrderInfo: getOrderInfo,
+  pay: pay
 }

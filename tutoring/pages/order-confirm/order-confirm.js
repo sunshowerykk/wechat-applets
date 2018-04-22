@@ -81,7 +81,7 @@ Page({
         return;
       } else {
         wx.navigateTo({
-          url: '/pages/pay/pay?id=' + that.id,
+          url: '/pages/pay/pay?sn=' + res.data.order_sn,
         })
       }
     })

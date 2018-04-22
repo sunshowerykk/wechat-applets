@@ -87,6 +87,9 @@ Page({
   },
   // 去支付
   handlePay: function(event) {
-    console.log(event.target.dataset.sn);
+    var sn = event.target.dataset.sn;
+    wx.redirectTo({
+      url: '/pages/pay/pay?sn=' + sn,
+    })
   }
 })

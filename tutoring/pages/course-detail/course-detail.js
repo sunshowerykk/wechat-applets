@@ -1,5 +1,6 @@
 // pages/course-detail/course-detail.js
 const request = require('../../utils/request.js');
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -21,6 +22,17 @@ Page({
     this.getCourseDetail(id);
     this.id = id;
     this.videoContext = wx.createVideoContext('myVideo');
+    var article = '<div>我是HTML代码</div>';
+    /**
+    * WxParse.wxParse(bindName , type, data, target,imagePadding)
+    * 1.bindName绑定的数据名(必填)
+    * 2.type可以为html或者md(必填)
+    * 3.data为传入的具体数据(必填)
+    * 4.target为Page对象,一般为this(必填)
+    * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
+    */
+    var that = this;
+    
   },
 
   /**
@@ -93,6 +105,7 @@ Page({
     var that = this;
     request.getCourseDetail(id, function(res) {
       var detail = res.data;
+      WxParse.wxParse('article', 'html', detail.course.intro, that, 0);
       that.setData({
         detail: detail
       });
@@ -100,6 +113,7 @@ Page({
   },
   // 点击观看
   handleWatch: function(event) {
+    var that = this;
     var courseId = this.id;
     var capterId = event.target.dataset.id;
     var url = event.target.dataset.url;
@@ -112,12 +126,15 @@ Page({
       this.redirectLogin();
       return;
     }
-
-    this.setData({
-      isPlay: true,
-      videoUrl: url
+    request.getCourseAuth(token, data, function(res) {
+      if (res.data.url) {
+        that.setData({
+          isPlay: true,
+          videoUrl: res.data.url
+        });
+        that.videoContext.play();
+      }
     });
-    this.videoContext.play();
   },
   // 点击购买事件
   handlePay: function() {
