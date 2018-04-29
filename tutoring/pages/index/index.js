@@ -50,7 +50,7 @@ Page({
       var data = res.data;
 
       // 数据处理
-      var imgUrls = data.ads.map(function(item) {
+      var imgUrls = data.home_ads.map(function(item) {
         return item.img;
       });
       data.colleges.forEach(function(item, index) {

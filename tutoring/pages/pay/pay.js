@@ -221,8 +221,14 @@ Page({
   },
   // 检查订单状态
   checkOrderStatus: function() {
-    request.checkOrderStatus(function(res) {
-
+    var that = this;
+    var sn = that.sn;
+    var token = wx.getStorageSync('token');
+    request.checkOrderStatus(token, sn, function(res) {
+      var result = res.data;
+      if (result.trade_state === 'SUCCESS') {
+        return 'success';
+      }
     })
   }
 })
