@@ -1,0 +1,11 @@
+<!--pages/message/message.wxml-->
+<view class="container">
+  <view class="message-item" bindtap='toDetail' wx:for="{{messageList}}" wx:key="{{index}}" data-id="{{item.id}}">
+    <view>
+      <view class="message-title active" wx:if="{{item.status === 0}}">{{item.title}}</view>
+      <view class="message-title" wx:else>{{item.title}}</view>
+    </view>
+    <view class="message-time">{{item.get_time}}</view>
+    <view class="message-content">{{item.content}}</view>
+  </view>
+</view>

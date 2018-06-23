@@ -1,0 +1,15 @@
+<!--pages/video-index/video-index.wxml-->
+<view class="page">
+  <view class="section" wx:for="{{list}}" wx:key="{{index}}">
+    <view class="section-header">
+      <view class="">{{item.cat.catname}}</view>
+      <view class="more" bindtap='toGroupList' data-id="{{item.cat.id}}">更多</view>
+    </view>
+    <view class="video-list">
+      <view class="video-item" bindtap="toItemList" wx:for="{{item.audioList}}" wx:for-item="audio" wx:key="{{audio.id}}" data-id="{{audio.id}}">
+        <image src="{{audio.pic}}" data-id="{{audio.id}}" wx-if="{{audio.pic}}"></image>
+        <view class="video-text" data-id="{{audio.id}}">{{audio.des}}</view>
+      </view>
+    </view>
+  </view>
+</view>

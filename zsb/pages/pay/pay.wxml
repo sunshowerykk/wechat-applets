@@ -1,0 +1,70 @@
+<!--pages/pay/pay.wxml-->
+<view class="container">
+  <!-- 优惠券 -->
+  <view class="quan-dialog" wx:if="{{showQuan}}">
+    <view class="no-quan">
+      <label class="pay-item" bindtap="noQuanClick">
+        <view class="radio">
+          <radio checked="{{!isUseYHQ}}"></radio>
+        </view>
+        <view>不使用优惠券</view>
+      </label>
+    </view>
+    <view class="card-list">
+      <view wx:for="{{order.coupon}}" wx:key="{{index}}" class="card" data-id="{{index}}" bindtap="selectYHQ">
+        <view class="card-size">￥{{item.fee}}</view>
+        <view class="card-content">
+          <view class="card-name">{{item.name}}</view>
+          <view class="card-time">{{item.end_time}}到期</view>
+        </view>
+    </view>
+    </view>
+    
+  </view>
+  <!-- 主页面 -->
+  <block wx:else>
+    <!-- 初错处理 -->
+    <view class="error" wx:if="{{isError}}">订单走丢了</view>
+    <!-- 正常情况 -->
+    <block wx:else>
+      <view class="options">订单详情</view>
+      <view class="order">
+        <view>订单编号：{{order.order_info.order_sn}}</view>
+        <view>应付金额：<text>￥{{order.order_info.order_amount}}</text></view>
+      </view>
+      <view class="options">订单支付方式</view>
+      <view class="pay-type">
+    
+        <label class="pay-item">
+          <view class="radio">
+            <radio checked="true"></radio>
+          </view>
+          <view>微信支付</view>
+        </label>
+        
+      </view>
+      <view class="options">可使用钱包抵扣</view>
+      <view class="qianbao">
+        <label class="pay-item" bindtap='handleWalletClick'>
+          <view class="radio">
+            <radio checked='{{isWallet}}'></radio>
+          </view>
+          <view >钱包余额：{{balance}}元</view>
+        </label>
+      </view>
+      <view class="options">选择优惠券</view>
+      <view class="quan" bindtap='showQuan'>
+        <view>优惠券</view>
+        <view class="quan-count" wx:if="{{coupon.fee}}">-￥{{coupon.fee}}</view>
+      </view>
+
+      <view class="pay-banner">
+        <view class="final-pay">
+          <view>合计: <text class="red">￥{{needPay}}</text></view>
+        </view>
+      <view class="pay-btn" bindtap='handlePay'>确认支付</view>
+      </view>
+    </block>
+  </block>
+</view>
+

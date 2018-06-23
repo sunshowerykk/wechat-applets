@@ -1,0 +1,11 @@
+<!--pages/course-all/course-all.wxml-->
+<view class="container">
+  <view class="item" bindtap='toDetail' wx:for="{{courseList}}" wx:index="{{index}}" data-id="{{item.course_id}}">
+    <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>
+    <view class="text">
+      <view class="name">课程名：{{item.course_name}}</view>
+      <view class="money">价格：{{item.discount}}元</view>
+      <view class="">截止日期: {{item.invalid_time}}</view>
+    </view>
+  </view>
+</view>

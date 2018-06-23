@@ -1,0 +1,6 @@
+/* pages/video-group-list/video-group-list.wxss */
+@import '../video-index/video-index.wxss';
+
+.section-header {
+  background: none;
+}

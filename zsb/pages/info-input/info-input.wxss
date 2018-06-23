@@ -1,0 +1,15 @@
+/* pages/info-input/info-input.wxss */
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #f1f1f1;
+}
+
+input {
+  background: #fff;
+  padding: 25rpx;
+  margin: 10px 0;
+}

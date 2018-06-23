@@ -1,0 +1,42 @@
+/* pages/bill/bill.wxss */
+.header {
+  height: 40px;
+  font-size: 14px;
+  background: #F6F6F6;
+  color: #BABDC2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.list-item {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  font-size: 14px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.name {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.time {
+  color: #999;
+}
+
+.monney {
+  font-size: 18px;
+}
+
+.monney.active {
+  color: #f09135;
+}
+
+.no-result {
+  text-align: center;
+  line-height: 50px;
+  color: #BABDC2;
+}

@@ -1,0 +1,12 @@
+<!--pages/message-detail/message-detail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="container">
+  <view class="header">
+    <view class="message-title">{{messsageDetail.title}}</view>
+    <view class="message-time">{{messsageDetail.publisher}}</view>
+    <view class="message-time">{{messsageDetail.get_time}}</view>
+  </view>
+  <view class="message-content">
+    <template is="wxParse" data="{{wxParseData:message.nodes}}"/>
+  </view>
+</view> 

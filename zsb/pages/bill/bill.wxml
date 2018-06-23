@@ -1,0 +1,16 @@
+<!--pages/bill/bill.wxml-->
+<view class="page">
+  <view class="header">
+    <view>明细</view>
+    <view>收支</view>
+  </view>
+  <view class="list-item" wx:for="{{billList}}"  wx:key="{{index}}" wx:if="{{billList.length > 0}}">
+    <view class="bill">
+      <view class="name">{{item.operation_detail}}</view>
+      <view class="time">{{item.operation_time}}</view>
+    </view>
+    <view class="monney {{item.status}}">{{item.income}}</view>
+  </view>
+  <view wx:if="{{billList.length === 0}}" class="no-result">暂无记录</view>
+  </view>
+
