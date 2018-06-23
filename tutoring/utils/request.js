@@ -352,8 +352,8 @@ const pay = function(data, cb) {
 }
 
 // 检查订单支付状态
-const checkOrderStatus = function(cb) {
-  const url = HOST + '/orderinfo/wxcheckorder';
+const checkOrderStatus = function (token, sn, cb) {
+  var url = HOST + '/order/wxcheckorder?access-token=' + token + '&out_trade_no=' + sn;
   wx.request({
     url: url,
     complete: cb
