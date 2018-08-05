@@ -26,9 +26,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#db2b1b",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#a1a1a1",
@@ -41,10 +41,16 @@
         "selectedIconPath": "./assets/imgs/home_active.png"
       },
       {
-        "pagePath": "pages/video-index/video-index",
-        "text": "音频",
-        "iconPath": "./assets/imgs/video.png",
-        "selectedIconPath": "./assets/imgs/video_active.png"
+        "pagePath": "pages/hot/hot",
+        "text": "热门",
+        "iconPath": "./assets/imgs/hot.png",
+        "selectedIconPath": "./assets/imgs/hot_active.png"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "text": "课程",
+        "iconPath": "./assets/imgs/courses.png",
+        "selectedIconPath": "./assets/imgs/courses_active.png"
       },
       {
         "pagePath": "pages/personal/personal",

@@ -1,50 +1,101 @@
-<!--index.wxml-->
-<view class="container">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-  <block wx:for="{{imgUrls}}" wx:key="index">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" height="150"/>
-    </swiper-item>
-  </block>
-</swiper>
-
-  <view class="school-container">
-    <view class="header">直属学院</view>
-    <scroll-view class="scroll-view_H" scroll-x="true">
-      <view id="green" class="scroll-view-item_H {{item.bgColor}}" bindtap='navigatoSchools' wx:for="{{home.colleges}}" wx:key="{{index}}" data-id="{{item.id}}">
-        <image src="{{item.icon}}" wx:if="{{item.icon}}"></image>
-        <view class="school-name">{{item.name}}</view>
-      </view>
-    </scroll-view>
+<view>
+  <view class="header">
+    <image src="https://www.kaoben.top/images/ban1.jpg" class="header-banner"></image>
+    <view class="header-ban">
+      <view>这里不仅是学好</view>
+      <view>选择都想学 升本有保障</view>
+      <view class="header-more">查看更多</view>
+    </view>
   </view>
-  <view class="select-list">
-    <view class="scource-item">
-      <view class="select-header">
-        <view>精选课程</view>
+  <view class="notify">
+    <view>有一门课程</view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">课程内容由命题老师设计</view>
+    <view class="section-subtitle">课程内容紧扣考试重点，讲解详略得当</view>
+    <view class="em"></view>
+    <view class="info-list">
+      <view class="info-item">
+        <image src="https://www.kaoben.top/images/txt1_icon1.png" class="info-img"></image>
+        <view class="info-item-title">三种班型</view>
       </view>
-      <view class="item" bindtap='navigateToCourse' wx:for="{{home.hotcourses}}" wx:key="{{key}}" data-id="{{item.id}}">
-       <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>
-        <view class="text">
-          <view class="name">课程名：{{item.course_name}}</view>
-          <view class="money">价格：{{item.discount}}元</view>
-          <view class="">在学人数: {{item.online}}</view>
-        </view>
+      <view class="info-item">
+        <image src="https://www.kaoben.top/images/txt1_icon2.png" class="info-img"></image>
+        <view class="info-item-title">按知识点设计</view>
+      </view>
+      <view class="info-item">
+        <image src="https://www.kaoben.top/images/txt1_icon3.png" class="info-img"></image>
+        <view class="info-item-title">模拟考试</view>
       </view>
     </view>
   </view>
 
-  <view class="select-list" wx:for="{{college_course}}" wx:key="{{index}}" wx:for-item="school">
-    <view class="scource-item">
-      <view class="select-header">
-        <view>{{school.college_name}}</view>
-        <view class="more" bindtap='navigatoSchool' data-id="{{school.catid}}">更多</view>
+  <view class="section">
+    <image src="https://www.kaoben.top/images/hfgg1.jpg" class="section2-bg"></image>
+  </view>
+
+  <view class="section">
+    <view class="section-header">智能在线学习效率高 时间自由 价格低</view>
+    <view class="section-subtitle">课程内容紧扣考试重点，讲解详略得当</view>
+    <view class="em"></view>
+    <view class="info-list">
+      <view class="img-item">
+        <image src="https://www.kaoben.top/images/indexpic2.jpg" class="img-list-img"></image>
+        <view class="img-info">效率优势：课堂视频内容；</view>
       </view>
-      <view class="item" bindtap='navigateToCourse' wx:for="{{school.college_course}}" wx:key="{{index}}" wx:for-item="course" data-id="{{course.id}}">
-       <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}" data-id="{{course.id}}"></image>
-        <view class="text" data-id="{{course.id}}">
-          <view class="name" data-id="{{course.id}}">课程名：{{course.course_name}}</view>
-          <view class="money" data-id="{{course.id}}">价格：{{course.discount}}元</view>
-          <view class="" data-id="{{course.id}}">在学人数: {{course.online}}</view>
+      <view class="img-item">
+        <image src="https://www.kaoben.top/images/indexpic2a.jpg" class="img-list-img"></image>
+        <view class="img-info">学习时间不限</view>
+      </view>
+      <view class="img-item">
+        <image src="https://www.kaoben.top/images/indexpic2b.jpg" class="img-list-img"></image>
+        <view class="img-info">学费远低于面授价格</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">课堂形式丰富多样</view>
+    <view class="section-subtitle">课堂由精讲视频、课堂练习、练习批改、讲解、答疑辅导五部分组成</view>
+    <view class="em"></view>
+    <view class="style-list">
+      <view class="style-item">
+        <view class="style-top">
+          <image src="https://www.kaoben.top/images/txt4_icon1.png" class="style-img"></image>
+        </view>
+        <view class="style-bottom">
+          <view class="style-bottom-title">精讲视频</view>
+          <view class="style-bottom-subtitle">专家上线授课，内容精致</view>
+        </view>
+      </view>
+      <view class="style-item">
+        <view class="style-top">
+          <image src="https://www.kaoben.top/images/txt4_icon2.png" class="style-img"></image>
+        </view>
+        <view class="style-bottom">
+          <view class="style-bottom-title">课堂练习</view>
+          <view class="style-bottom-subtitle">巩固课堂知识，加强重点练习</view>
+        </view>
+      </view>
+      </view>
+      <view class="style-list">
+        <view class="style-item">
+        <view class="style-top">
+          <image src="https://www.kaoben.top/images/txt4_icon3.png" class="style-img"></image>
+        </view>
+        <view class="style-bottom">
+          <view class="style-bottom-title">专人批改</view>
+          <view class="style-bottom-subtitle">作业辅导老师全天恭候，即时批改作业，系统生成学情报告</view>
+        </view>
+      </view>
+      <view class="style-item">
+        <view class="style-top">
+          <image src="https://www.kaoben.top/images/txt4_icon4.png" class="style-img"></image>
+        </view>
+        <view class="style-bottom">
+          <view class="style-bottom-title">答案讲解</view>
+          <view class="style-bottom-subtitle">与课堂练习配套的讲解</view>
         </view>
       </view>
     </view>
