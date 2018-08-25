@@ -18,7 +18,6 @@ Page({
   * 生命周期函数--监听页面加载
   */
   onLoad: function (options) {
-    console.log('aaa');
     this.getHome();
   },
   // 去学院详情
@@ -44,23 +43,30 @@ Page({
   // 请求首页
   getHome: function () {
     var that = this;
-    console.log('bbb');
     request.getHome(function (res) {
-      console.log(res);
       var data = res.data;
 
       // 数据处理
-      var imgUrls = data.ads.map(function (item) {
+      var imgUrls = data.home_ads.map(function (item) {
         return item.img;
       });
-      data.colleges.forEach(function (item, index) {
-        item.bgColor = that.getSchoolColor(index);
-      })
-      console.log(data);
       that.setData({
-        imgUrls: imgUrls,
+        home: { class_courses: data.class_courses }
+      }, function() {
+        that.setData({
+          imgUrls: imgUrls          
+        }, function() {
+          that.setData({
+            home: {
+              class_courses: data.class_courses,
+              open_courses: data.open_courses
+            }
+          });
+        })
+      });
+
+      that.setData({
         home: data,
-        college_course: data.college_course
       });
     })
   },

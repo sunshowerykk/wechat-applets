@@ -8,84 +8,86 @@ Page({
    */
   data: {
     key: 0,
-    tableList: ['课程简介', '课程目录'],
+    tableList: ['课程简介'],
     detail: {},
     isPlay: false,
     videoUrl: '',
+    swiperHeight: 300,
+    canPlay: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var id = options.id;
     this.getCourseDetail(id);
     this.id = id;
     this.videoContext = wx.createVideoContext('myVideo');
-    var article = '<div>我是HTML代码</div>';
-    /**
-    * WxParse.wxParse(bindName , type, data, target,imagePadding)
-    * 1.bindName绑定的数据名(必填)
-    * 2.type可以为html或者md(必填)
-    * 3.data为传入的具体数据(必填)
-    * 4.target为Page对象,一般为this(必填)
-    * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
-    */
-    var that = this;
-    
   },
-
+  getSwiperHeight: function() {
+    var that = this;
+    var query = wx.createSelectorQuery();
+    query.select('#swiper').boundingClientRect(function(swiper) {
+      wx.createSelectorQuery().selectAll('.bottom').boundingClientRect(function(res) {
+        var height = res[that.data.key].top - swiper.top;
+        that.setData({
+          swiperHeight: height
+        });
+      }).exec()
+    }).exec()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   },
   // 获取课程详情
   getCourseDetail: function(id) {
-    
+
   },
   handleTableClick: function(event) {
     var id = event.target.dataset.id;
@@ -99,16 +101,27 @@ Page({
     this.setData({
       key: current
     });
+    this.getSwiperHeight();
   },
   // 请求课程详情
   getCourseDetail: function(id) {
     var that = this;
     request.getCourseDetail(id, function(res) {
       var detail = res.data;
+      // 课程详情富文本转换
       WxParse.wxParse('article', 'html', detail.course.intro, that, 0);
+      that.hasAuthPlay(detail.course);
+      // setData 然后计算swiper的高度
       that.setData({
         detail: detail
-      });
+      }, function() {
+        that.getSwiperHeight();
+        if (detail.course.course_type === 1) {
+          that.setData({
+            tableList: ['课程简介', '课程目录'],
+          })
+        }
+      })
     })
   },
   // 点击观看
@@ -141,7 +154,7 @@ Page({
     var that = this;
     var id = this.id;
     var token = wx.getStorageSync('token');
-    
+
     // 判断token
     if (!token) {
       this.redirectLogin();
@@ -167,5 +180,12 @@ Page({
     wx.redirectTo({
       url: url,
     })
+  },
+  // 判断时是否有权限观看公开课
+  hasAuthPlay(course) {
+    var isPlay = ((course.ispay === 3) || (course.discount === '0.00')) && course.course_type === 2;
+    this.setData({
+      canPlay: isPlay
+    });
   }
 })

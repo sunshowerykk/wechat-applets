@@ -2,14 +2,17 @@
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="container">
   <video id="myVideo" src="{{videoUrl}}" wx:if="{{isPlay}}"></video>
-  <block wx:else> 
+  <block wx:else>
+    <view class="top-img-wrapper">
     <image src="{{detail.course.home_pic}}" wx:if="{{detail.course.home_pic}}"></image>
+    <image src="https://www.kaoben.top/images/video-play-btn.png" class="play-btn" wx:if="{{canPlay}}"></image>
+    </view>
   </block>
   <view class="table-title">
     <view class="title-item {{index === key ? 'active' : ''}}" bindtap='handleTableClick' data-id="{{index}}" wx:for="{{tableList}}" wx:key="{{index}}">{{item}}</view>
   </view>
   <view class="course-content">
-    <swiper bindchange="onScroll" current="{{key}}">
+    <swiper bindchange="onScroll" current="{{key}}" id="swiper" style="height:{{swiperHeight}}px">
       <swiper-item>
           <view class="content">
             <view class="current-money">现价：{{detail.course.discount}}元</view>
@@ -26,12 +29,13 @@
             </view>
             <view class="gray-bg">{{detail.teacher.teacher_tag}}</view>
           </view>
-          <view class="teacher-container">
+          <view class="teacher-container" id="a">
             <view class="teacher-title">课程简介</view>
             <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
           </view>
+          <view class="bottom"></view>
       </swiper-item>
-      <swiper-item>
+      <swiper-item wx:if="{{detail.course.course_type === 1}}">
         <view class="course-list">
           <view wx:for="{{detail.chapter}}" wx:key="{{index}}">
             <view class="course-list__header">{{item.chapter_name}}</view>
@@ -41,6 +45,7 @@
             </view>
           </view>
         </view>
+        <view class="bottom"></view>
       </swiper-item>
     </swiper>
   </view>

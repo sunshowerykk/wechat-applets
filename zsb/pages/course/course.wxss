@@ -20,6 +20,7 @@ page {
   color: #ccc;
   font-size: 14px;
   padding: 20rpx 0;
+  align-items: center;
   border-bottom: 1px solid #ebebeb;
 }
 .name {
@@ -32,6 +33,7 @@ image {
   height: 180rpx;
   margin-right: 20rpx;
   border-radius: 5px;
+  flex: none;
 }
 
 .item::after {

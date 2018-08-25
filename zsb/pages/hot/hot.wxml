@@ -1,50 +1,37 @@
 <!--index.wxml-->
 <view class="container">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-  <block wx:for="{{imgUrls}}" wx:key="index">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" height="150"/>
-    </swiper-item>
-  </block>
-</swiper>
-
-  <view class="school-container">
-    <view class="header">直属学院</view>
-    <scroll-view class="scroll-view_H" scroll-x="true">
-      <view id="green" class="scroll-view-item_H {{item.bgColor}}" bindtap='navigatoSchools' wx:for="{{home.colleges}}" wx:key="{{index}}" data-id="{{item.id}}">
-        <image src="{{item.icon}}" wx:if="{{item.icon}}"></image>
-        <view class="school-name">{{item.name}}</view>
-      </view>
-    </scroll-view>
-  </view>
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
   <view class="select-list">
     <view class="scource-item">
       <view class="select-header">
-        <view>精选课程</view>
+        <view>热门班级</view>
       </view>
-      <view class="item" bindtap='navigateToCourse' wx:for="{{home.hotcourses}}" wx:key="{{key}}" data-id="{{item.id}}">
-       <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>
+      <view class="item" bindtap='navigateToCourse' wx:for="{{home.class_courses}}" wx:key="{{key}}" data-id="{{item.id}}">
+        <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>
         <view class="text">
-          <view class="name">课程名：{{item.course_name}}</view>
-          <view class="money">价格：{{item.discount}}元</view>
-          <view class="">在学人数: {{item.online}}</view>
+          <view class="name">{{item.course_name}}</view>
+          <view class="">{{item.online}}人正在学</view>
         </view>
       </view>
     </view>
   </view>
-
-  <view class="select-list" wx:for="{{college_course}}" wx:key="{{index}}" wx:for-item="school">
+  <view class="select-list">
     <view class="scource-item">
       <view class="select-header">
-        <view>{{school.college_name}}</view>
-        <view class="more" bindtap='navigatoSchool' data-id="{{school.catid}}">更多</view>
+        <view>公开课程</view>
       </view>
-      <view class="item" bindtap='navigateToCourse' wx:for="{{school.college_course}}" wx:key="{{index}}" wx:for-item="course" data-id="{{course.id}}">
-       <image src="{{course.list_pic}}" wx:if="{{course.list_pic}}" data-id="{{course.id}}"></image>
-        <view class="text" data-id="{{course.id}}">
-          <view class="name" data-id="{{course.id}}">课程名：{{course.course_name}}</view>
-          <view class="money" data-id="{{course.id}}">价格：{{course.discount}}元</view>
-          <view class="" data-id="{{course.id}}">在学人数: {{course.online}}</view>
+      <view class="item" bindtap='navigateToCourse' wx:for="{{home.open_courses}}" wx:key="{{key}}" data-id="{{item.id}}">
+        <image src="{{item.list_pic}}" wx:if="{{item.list_pic}}"></image>
+        <view class="text">
+          <view class="name">课程名：{{item.course_name}}</view>
+          <view class="money">价格：{{item.discount}}元</view>
+          <view class="">主讲教师: {{item.teacher_id}}</view>
         </view>
       </view>
     </view>
