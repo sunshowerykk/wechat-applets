@@ -79,7 +79,6 @@ button {
 }
 
 swiper {
-  min-height: 800px;
   background: #f5f5f5;
 }
 
@@ -168,4 +167,19 @@ video {
   color: #f88c24;
   border: 1px solid #f88c24;
   background: transparent;
+}
+
+.top-img-wrapper {
+  position: relative;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border: none;
+  outline: none;
 }
